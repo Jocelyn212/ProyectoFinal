@@ -1,5 +1,7 @@
 <template>
-    Hola soy home
+   <div class="main">
+    soy home
+   </div>
 </template>
 <script>
 export default {
