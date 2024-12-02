@@ -1,13 +1,17 @@
 <template>
    <div class="main">
-    <div class="shop-container grid grid-cols-4 gap-4">
+   
+    <div class="shop-container grid grid-cols-4 gap-4 bg-custom-gradient">
     <Card v-for="product in products" :product="product" @click=""/>
+
+
 </div>
    </div>
 </template>
 <script>
 import axios from "axios";
-import Card from "../components/Card.vue"
+import Card from "../components/Card.vue";
+
 
 export default {
     name: "Home",
@@ -34,6 +38,7 @@ export default {
         this.getProductData();
     }
 }
+
 </script>
 <style>
 
