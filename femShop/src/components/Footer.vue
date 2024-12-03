@@ -1,7 +1,7 @@
 <template>
-    <div class="footer">
+    <footer>
         soy footer
-    </div>
+    </footer>
 </template>
 <script>
 export default {

@@ -4,11 +4,14 @@ export default {
   theme: {
     colors: {
       'lila-primary':'#540D6E',
-      'lila-secundary':'#ca9bdd',
+      'lila-secondary':'#ca9bdd',
       'amarillo' : '#FFC401',
       'rosa':'#EE4266',
       'dark-grey':'#4A4A4A',
       'grey':'#B6B6B6',
+      'light-grey':'#F4F4F4',
+      'white':'#ffffff',
+      'black':'#000000',
    
 
     },
@@ -19,6 +22,7 @@ export default {
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
       },
+      
     },
   },
   plugins: [],

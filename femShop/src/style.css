@@ -2,6 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
+
 body {
-    @apply font-poppins;
+    @apply font-poppins  text-dark-grey bg-white antialiased relative;
   }
+.gradient{
+  @apply  bg-custom-gradient
+}
+.fl{
+  @apply flex justify-center 
+}
+.container{
+  @apply max-w-screen-xl mx-auto w-full px-8 flex  ;
+}  
+.logo{
+  @apply flex justify-start items-end relative
+}
+.h-logo{
+  @apply w-[120px];
+}
+.h-slogan{
+  @apply text-white uppercase font-bold text-xs tracking-widest relative ml-3 mb-2
+}
+.title-1{
+  @apply text-lila-primary text-lg font-bold
+}
+/* Buttons */
+.button {
+  @apply  text-base font-bold rounded-lg px-6 py-2 transition-all  cursor-pointer ;
+}
+.button-primary{
+  @apply bg-amarillo hover:brightness-90 text-black border border-amarillo;
+}
+.button-secondary{
+  @apply bg-lila-secondary hover:brightness-90 text-black border border-amarillo text-xs;
+}
+.shop-container {
+  @apply  grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6 
+}
+.card{
+  @apply  border rounded-xl p-6 border-grey
+}
+.card figure img{
+  @apply border rounded-xl  border-grey shadow-xl border border-light-grey
+}
+.card .title{
+  @apply text-lila-primary font-bold mt-2 text-sm h-[40px]
+}
+.card .price{
+  @apply text-dark-grey font-bold mt-2 text-lg
+}
