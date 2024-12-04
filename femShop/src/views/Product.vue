@@ -1,7 +1,6 @@
 <template>
-    <main  class="w-full">
+    <main>
         <div class="container">
-            <div class="breadcrumbs"></div>
             <div class="product-card">
                 <div class="product-images">
                     <div class="image-primary">

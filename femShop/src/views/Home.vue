@@ -1,5 +1,5 @@
 <template>
-   <main  class="w-full">
+   <main>
     <div class="container flex-col">
         <h2 v-if="products" class="title-1 mt-10">{{ products[0].category.name }}</h2>
         <form class="self-center mb-8">
