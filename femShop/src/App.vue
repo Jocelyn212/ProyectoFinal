@@ -1,10 +1,10 @@
 
 <template>
-  <div class="container">
+
     <Header />
     <RouterView />
     <Footer />
-  </div>
+
 </template>
 <script >
 import Home from "./views/Home.vue";
