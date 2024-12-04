@@ -5,7 +5,7 @@
         <form class="self-center mb-8">
             <label for="pr-search" class="hidden">Search</label>
             <input  id="pr-search"  type="text" placeholder="Search ..." class="form-input">
-            <button class="button button-primary -ml-[8px] relative">Search</button>
+            <button class="button button-primary -ml-[12px] relative">Search</button>
         </form>
         <div class="shop-container">
             <Card v-for="product in products" :product="product" @click=""/>
