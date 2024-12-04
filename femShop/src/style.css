@@ -27,7 +27,7 @@ body {
   @apply  text-base font-bold rounded-lg px-6 py-2 transition-all  cursor-pointer ;
 }
 .button-primary{
-  @apply bg-amarillo hover:brightness-90 text-black border border-amarillo;
+  @apply bg-amarillo hover:brightness-90 text-black border border-grey;
 }
 .button-secondary{
   @apply bg-lila-secondary hover:brightness-90 text-black border border-lila-secondary  text-xs ;
@@ -59,10 +59,10 @@ header{
 /* Shop */
 
 .shop-container {
-  @apply  grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-6 
+  @apply  grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-6 justify-center md:justify-between
 }
 .card{
-  @apply  border rounded-xl  border-grey grid grid-cols-1 gap-2
+  @apply  border rounded-xl  border-grey grid grid-cols-1 gap-2 max-w-[300px] mx-auto
 }
 .card figure img{
   @apply border  relative  shadow-xl  border-light-grey rounded-t-xl 
