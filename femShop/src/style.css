@@ -3,5 +3,93 @@
 @tailwind utilities;
 
 body {
-    @apply font-poppins;
+    @apply font-poppins  text-dark-grey bg-white antialiased relative;
   }
+  .container{
+    @apply max-w-screen-xl mx-auto w-full px-8 flex  ;
+  }  
+/* Titles */
+.title-1{
+  @apply text-lila-primary text-lg font-bold
+}
+
+
+/* Form */
+.form-control{
+  @apply flex 
+}
+.form-input{
+  @apply rounded-md border px-3 py-2 text-dark-grey border-grey outline-none relative
+}
+
+/* Buttons */
+.button {
+  @apply  text-base font-bold rounded-lg px-6 py-2 transition-all  cursor-pointer ;
+}
+.button-primary{
+  @apply bg-amarillo hover:brightness-90 text-black border border-grey;
+}
+.button-secondary{
+  @apply bg-lila-secondary hover:brightness-90 text-black border border-lila-secondary  text-xs ;
+}
+
+/* Header */
+header{
+  @apply w-full
+}
+  header .logo{
+    @apply flex justify-start items-end relative
+  }
+  header .logo img{
+    @apply w-[120px];
+  }
+.header-gradient{
+  @apply  bg-custom-gradient w-full  text-white border-y border-lila-primary
+}
+.h-slogan{
+  @apply text-white uppercase font-bold text-xs tracking-widest relative ml-3 mb-2
+}
+.h-buttons{
+  @apply  text-sm font-bold
+}
+.item-num{
+  @apply  text-white ml-2 bg-rosa py-[1px] px-[4px] rounded-xl
+}
+
+/* Shop */
+
+.shop-container {
+  @apply  grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-6 justify-center md:justify-between
+}
+.card{
+  @apply  border rounded-xl  border-grey grid grid-cols-1 gap-2 max-w-[300px] mx-auto
+}
+.card figure img{
+  @apply border  relative  shadow-xl  border-light-grey rounded-t-xl 
+}
+.card figure .favorite{
+  @apply  text-rosa absolute top-[10px] right-[10px] z-10
+}
+.card .product-details{
+  @apply grid px-4
+
+}
+.card .title{
+  @apply text-lila-primary font-bold  text-lg  leading-6
+}
+.card .price{
+  @apply text-black font-bold  text-lg text-center
+}
+.shop-container .button{
+  @apply py-3
+}
+/* Footer */
+footer{
+  @apply w-full bg-lila-secondary py-16 mt-20
+}
+.f-logo{
+  @apply w-[220px];
+}
+
+
+
