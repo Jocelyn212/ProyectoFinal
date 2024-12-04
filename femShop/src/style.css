@@ -10,7 +10,10 @@ body {
   }  
 /* Titles */
 .title-1{
-  @apply text-lila-primary text-lg font-bold
+  @apply text-lila-primary text-2xl drop-shadow-sm font-bold
+}
+.title-2{
+  @apply text-lila-primary text-lg drop-shadow-sm font-bold
 }
 
 
@@ -24,13 +27,13 @@ body {
 
 /* Buttons */
 .button {
-  @apply  text-base font-bold rounded-lg px-6 py-2 transition-all  cursor-pointer ;
+  @apply  text-base font-bold rounded-lg px-6 py-2  cursor-pointer transition hover:brightness-90;
 }
 .button-primary{
-  @apply bg-amarillo hover:brightness-90 text-black border border-grey;
+  @apply bg-amarillo  text-black border border-grey;
 }
 .button-secondary{
-  @apply bg-lila-secondary hover:brightness-90 text-black border border-lila-secondary  text-xs ;
+  @apply bg-lila-secondary  text-black border border-lila-secondary  text-xs ;
 }
 
 /* Header */
@@ -38,24 +41,41 @@ header{
   @apply w-full
 }
   header .logo{
-    @apply flex justify-start items-end relative
+    @apply flex justify-start items-end relative sm:flex-nowrap flex-wrap
   }
   header .logo img{
     @apply w-[120px];
   }
 .header-gradient{
-  @apply  bg-custom-gradient w-full  text-white border-y border-lila-primary
+  @apply  bg-custom-gradient w-full  text-white shadow-md
 }
 .h-slogan{
-  @apply text-white uppercase font-bold text-xs tracking-widest relative ml-3 mb-2
+  @apply text-white uppercase font-bold text-xs tracking-widest relative ml-3 mb-2 drop-shadow-sm
 }
 .h-buttons{
-  @apply  text-sm font-bold
+  @apply  text-sm font-bold drop-shadow-sm
+}
+.h-buttons li{
+  @apply hover:text-amarillo cursor-pointer ml-8 transition
 }
 .item-num{
-  @apply  text-white ml-2 bg-rosa py-[1px] px-[4px] rounded-xl
+  @apply  text-dark-grey ml-2 bg-amarillo py-[1px] px-[5px] rounded-xl
 }
-
+header .dropdown-button{
+  @apply p-4 bg-amarillo text-sm hover:brightness-90
+}
+header .dropdown-menu{
+  @apply absolute  border border-grey shadow-sm  w-full z-50 bg-light-grey text-sm text-dark-grey
+}
+header .dropdown-item{
+  @apply block p-5 hover:bg-white
+}
+header .links{
+  @apply flex flex-nowrap text-dark-grey text-sm h-full pb-2 
+}
+header .links li{
+  @apply pl-8 hover:text-black
+}
 /* Shop */
 
 .shop-container {

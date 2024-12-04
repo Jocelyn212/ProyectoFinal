@@ -29,6 +29,10 @@ html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
+a, button, .link{
+  cursor:pointer;
+  outline: none;
+}
 a:focus {
   outline: thin dotted;
 }
