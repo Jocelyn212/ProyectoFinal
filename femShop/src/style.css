@@ -10,7 +10,7 @@ body {
   }  
 /* Titles */
 .title-1{
-  @apply text-lila-primary text-2xl drop-shadow-sm font-bold
+  @apply text-lila-primary text-3xl drop-shadow-sm font-bold
 }
 .title-2{
   @apply text-lila-primary text-lg drop-shadow-sm font-bold
@@ -27,7 +27,7 @@ body {
 
 /* Buttons */
 .button {
-  @apply  text-base font-bold rounded-lg px-6 py-2  cursor-pointer transition hover:brightness-90;
+  @apply  text-base font-bold rounded-lg px-6 py-2  cursor-pointer hover:transition-all hover:brightness-90;
 }
 .button-primary{
   @apply bg-amarillo  text-black border border-grey;
@@ -62,7 +62,7 @@ header{
   @apply  text-dark-grey ml-2 bg-amarillo py-[1px] px-[5px] rounded-xl
 }
 header .dropdown-button{
-  @apply p-4 bg-amarillo text-sm hover:brightness-90
+  @apply p-4 bg-amarillo text-sm hover:brightness-90 hover:text-white hover:transition-all
 }
 header .dropdown-menu{
   @apply absolute  border border-grey shadow-sm  w-full z-50 bg-light-grey text-sm text-dark-grey
@@ -78,30 +78,47 @@ header .links li{
 }
 /* Shop */
 
-.shop-container {
-  @apply  grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-6 justify-center md:justify-between
-}
-.card{
-  @apply  border rounded-xl  border-grey grid grid-cols-1 gap-2 max-w-[300px] mx-auto
-}
-.card figure img{
-  @apply border  relative  shadow-xl  border-light-grey rounded-t-xl 
-}
-.card figure .favorite{
-  @apply  text-rosa absolute top-[10px] right-[10px] z-10
-}
-.card .product-details{
-  @apply grid px-4
+  .shop-container {
+    @apply  grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-6 justify-center md:justify-between
+  }
+  .card{
+    @apply  border rounded-xl  border-grey grid grid-cols-1 gap-2 max-w-[300px] mx-auto
+  }
+  .card figure img{
+    @apply border  relative  shadow-xl  border-light-grey rounded-t-xl 
+  }
+  .card figure .favorite{
+    @apply  text-rosa absolute top-[10px] right-[10px] z-10
+  }
+  .card .product-details{
+    @apply grid px-4
 
+  }
+  .card .title{
+    @apply text-lila-primary font-bold  text-lg  leading-6
+  }
+  .card .price{
+    @apply text-black font-bold  text-lg text-center
+  }
+  .shop-container .button{
+    @apply py-3
+  }
+
+/* cart */
+.cart-container{
+  @apply grid grid-cols-3 gap-x-3 justify-between w-full
 }
-.card .title{
-  @apply text-lila-primary font-bold  text-lg  leading-6
+.product-list{
+  @apply col-span-2 
 }
-.card .price{
-  @apply text-black font-bold  text-lg text-center
+.product-list .cart-cols{
+  @apply grid grid-cols-6 justify-start items-center py-2 px-4 gap-x-4
 }
-.shop-container .button{
-  @apply py-3
+.product-list .titles{
+  @apply  bg-cyan text-sm font-bold
+}
+.product-list .items{
+  @apply text-xs
 }
 /* Footer */
 footer{
