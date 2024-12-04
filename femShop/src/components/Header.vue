@@ -1,5 +1,6 @@
 <template>
     <header>
+
         <div class="container flex  items-center justify-between py-2">
             <span>Need Help?</span>
             <span>Track your order</span>
@@ -13,7 +14,8 @@
                 <div class="h-buttons">
                     <ul class="flex">
                         <li class="mr-4">Sign in</li>
-                        <li>Cart<sup class="item-num">10</sup></li>
+                    
+                        <li><RouterLink to="/cart">Cart<sup class="item-num">{{ cartStore.cartSize }}</sup></RouterLink></li>
                     </ul>
                 </div>
             </div>
@@ -26,8 +28,13 @@
     </header>
 </template>
 <script>
+import { useCartStore} from "../stores/cart"
+import {mapStores} from "pinia"
 export default {
     name: "Header",
+    computed:{
+    ...mapStores(useCartStore)
+}
 }
 </script>
 <style></style>
