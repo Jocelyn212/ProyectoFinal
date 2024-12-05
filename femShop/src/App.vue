@@ -10,6 +10,10 @@
 import Home from "./views/Home.vue";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
+
+import { useCartStore} from "./stores/cart"
+import {mapStores} from "pinia"
+
 export default {
     name: "App",
     components: {
@@ -17,6 +21,13 @@ export default {
     Header,
     Footer
   },
+  mounted() {
+    this.cartStore.getItemsFromFirebase()
+  },
+  computed:{
+    ...mapStores(useCartStore)
+}
+
 }
 </script>
 <style >
