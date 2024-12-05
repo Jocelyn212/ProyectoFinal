@@ -9,7 +9,7 @@
             <p class="price">€ {{ product.price}}</p>
         </div>
         <div class="buttons flex  p-1 justify-between items-end">    
-            <button class="button button-secondary whitespace-nowrap mr-2 rounded-xl " @click="cartStore.addItemToCart(product)"> Add to cart </button>
+            <button class="button button-secondary whitespace-nowrap mr-2 rounded-xl " @click="cartStore.addItemToCart(product,1)"> Add to cart </button>
             <button class="button button-secondary rounded-xl "><span class="fa-regular fa-eye"></span></button>
         </div>
     </div>
