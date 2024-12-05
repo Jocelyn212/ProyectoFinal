@@ -12,8 +12,6 @@
             <button class="button button-secondary whitespace-nowrap mr-2 rounded-xl " @click="cartStore.addItemToCart(product)"> Add to cart </button>
             <button class="button button-secondary rounded-xl "><span class="fa-regular fa-eye"></span></button>
         </div>
-        
-    
     </div>
 </template>
 <script>
