@@ -6,7 +6,7 @@
     @apply font-poppins  text-dark-grey bg-white antialiased relative;
     }
   .container{
-    @apply max-w-screen-xl mx-auto w-full md:px-8 p-2 flex  ;
+    @apply max-w-screen-xl mx-auto w-full md:px-8 px-2 flex  ;
   }  
   main{
     @apply grow w-full md:pt-8 pt-2;
