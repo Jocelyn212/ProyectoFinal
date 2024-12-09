@@ -62,10 +62,10 @@
     @apply text-white uppercase font-bold text-xs tracking-widest relative ml-3 mb-2 drop-shadow-sm
   }
   .h-buttons{
-    @apply  text-sm font-bold drop-shadow-sm
+    @apply  text-sm font-bold drop-shadow-sm 
   }
   .h-buttons li{
-    @apply hover:text-amarillo cursor-pointer ml-8 transition
+    @apply hover:text-amarillo cursor-pointer  transition
   }
   .item-num{
     @apply  text-dark-grey ml-2 bg-amarillo py-[1px] px-[5px] rounded-xl
