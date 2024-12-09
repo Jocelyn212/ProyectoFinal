@@ -1,10 +1,10 @@
 <template>
    <main>
     <div class="container flex-col">
-        <h2 v-if="products" class="title-1 mt-10">{{ products[0].category.name }}</h2>
+        <h2 v-if="products" class="title-1 mt-10">Category: {{ products[0].category.name }}</h2>
         <form class="self-center mb-8">
             <label for="pr-search" class="hidden">Search</label>
-            <input  id="pr-search"  type="text" placeholder="Search ..." class="form-input">
+            <input  id="pr-search"  type="text" placeholder="Search ..." class="form-input" />
             <button class="button button-primary -ml-[12px] relative">Search</button>
         </form>
         <div class="shop-container">

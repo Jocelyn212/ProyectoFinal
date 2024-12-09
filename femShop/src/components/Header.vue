@@ -6,16 +6,28 @@
         </div>     
         <div class="header-gradient ">
             <div class="container items-center justify-between py-4">
-                <div class="logo">
-                    <img src="../img/FemShopH.png" alt="FemShop - Online Shop">
-                    <h1 class="h-slogan">Online Shop</h1>
-                </div>
+                <RouterLink to="/">
+                    <div class="logo">
+                            <img src="../img/FemShopH.png" alt="FemShop - Online Shop">
+                            <h1 class="h-slogan">Online Shop</h1>
+                    </div>
+                </RouterLink>
                 <div class="h-buttons">
-                    <ul class="flex items-center gap-x-4">
-                        <li class="link" v-if="!activeUserStore.profile.avatar" @click="toggleSignIn"><span class="fa-regular fa-user mr-2" ></span>Sign in</li>
-                        <li class="link flex items-center  whitespace-nowrap gap-2" v-if="activeUserStore.profile.avatar"><img :src="activeUserStore.profile.avatar" class="w-8 rounded-full border-amarillo border-2 shadow-md"> {{activeUserStore.profile.name}}</li>
-                        <li class="link whitespace-nowrap" v-if="activeUserStore.profile.avatar" @click="logOut"><span class="fa-regular fa-user mr-2" ></span>Log out</li>
-                        <li class="link whitespace-nowrap"><RouterLink to="/cart"><span class="fa-solid fa-cart-shopping  mr-2"></span>Cart<sup class="item-num">{{ cartStore.cartSize }}</sup></RouterLink></li>
+                    <ul class="flex items-center gap-x-4 sm:gap-x-8">
+                        <li class="link" v-if="!activeUserStore.profile.avatar" @click="toggleSignIn">
+                            <span class="fa-regular fa-user mr-2" ></span>Sign in
+                        </li>
+                        <li class="link flex items-center  whitespace-nowrap gap-2" v-if="activeUserStore.profile.avatar">
+                            <img :src="activeUserStore.profile.avatar" class="w-8 rounded-full border-amarillo border-2 shadow-md"> {{activeUserStore.profile.name}}
+                        </li>
+                        <li class="link whitespace-nowrap" v-if="activeUserStore.profile.avatar" @click="logOut">
+                            <span class="fa-regular fa-user mr-2" ></span>Log out
+                        </li>
+                        <li class="link whitespace-nowrap">
+                            <RouterLink to="/cart">
+                            <span class="fa-solid fa-cart-shopping  mr-2"></span>Cart<sup class="item-num">{{ cartStore.cartSize }}</sup>
+                            </RouterLink>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -34,8 +46,12 @@
                     </div>
                 </div>
                 <ul class="links">
-                    <li class="link"><RouterLink to="/">Home <span class="fa-solid fa-chevron-down ml-2"></span></RouterLink></li>
-                    <li class="link">About us<span class="fa-solid fa-chevron-down ml-2"></span></li>
+                    <li class="link">
+                        <RouterLink to="/">Home <span class="fa-solid fa-chevron-down ml-2"></span></RouterLink>
+                    </li>
+                    <li class="link">
+                        <RouterLink to="/">Catalog<span class="fa-solid fa-chevron-down ml-2"></span></RouterLink>
+                    </li>
                 </ul>
             </div>
         </nav>
