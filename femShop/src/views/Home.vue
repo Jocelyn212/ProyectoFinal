@@ -31,7 +31,7 @@ export default {
     methods: {
         async getProductData() {
             try {
-                const response = await axios.get(`https://api.escuelajs.co/api/v1/products/?categoryId=4`);
+                const response = await axios.get(`https://api.escuelajs.co/api/v1/products/?categoryId=5`);
                 this.products = response.data;
                 console.log(this.products)
             } catch(error) {
