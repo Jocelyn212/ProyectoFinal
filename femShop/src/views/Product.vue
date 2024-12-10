@@ -3,7 +3,7 @@
         <div class="container">
             <div class="product-card" >
                 <div class="product-images">
-                    <div class="image-primary mb-6">
+                    <div class="image-primary mb-4">
                         <img 
                         v-if="product.images && product.images.length" 
                         :src="product.images[0]" 
@@ -16,17 +16,17 @@
                         v-if="product.images[1] && product.images[1].length" 
                         :src="product.images[1]" 
                         :alt="product.title"
-                        class="w-[110px]"
+                        class="w-[46.5%]"
                     >
                         <img 
                             v-if="product.images[2] && product.images[2].length" 
                             :src="product.images[2]" 
                             :alt="product.title"
-                            class="w-[110px]"
+                            class="w-[46.5%]"
                         >
                     </div>
                 </div>
-                <div class="product-data sm:col-span-2">
+                <div class="product-data ">
                     <h2 class="title">
                         {{ product.title }}
                      
@@ -34,18 +34,31 @@
                     <p class="price">
                          {{ product.price }} €
                     </p>
+                    <div class=" mb-4">
+                        <span class="txt mr-2">Availability:  </span>
+                        <span class=" text-green"><span class="fa-solid fa-check"></span> in stock</span>
+                    </div>
                     <p class="description">
-                         {{ product.description }} €
+                         {{ product.description }} 
                     </p>
-                   
-                    <div class="availability"></div>
 
-                    <div class="qty">
-                        <span></span>
-                        <div></div>
+                    <div class="qty ">
+                        <span class="txt">Quantity:</span>
+                        <button 
+                        @click="decrementQuantity"
+                        :disabled="quantity <= 1"
+                        >
+                        -
+                        </button>
+                        <span class="txt text-rosa">{{ quantity }}</span>
+                        <button 
+                        @click="incrementQuantity"
+                        >
+                        +
+                        </button>
                     </div>
 
-                    <button class="button button-primary"  @click="cartStore.addItemToCart(product, 1)"
+                    <button class="button button-primary"  @click="addToCart"
                     >
                         Add to cart
                     </button>
@@ -57,38 +70,50 @@
  <script>
     import { useCartStore} from "../stores/cart"
     import {mapStores} from "pinia"
-
- export default {
-     name: "Product",
-
-  data() {
-        return {
-            product: {
-                id: null,
-                title: '',
-                price: 0,
-                description: '',
-                images: []
+    export default {
+        name: "Product",
+    data() {
+            return {
+                product: {
+                    id: null,
+                    title: '',
+                    price: 0,
+                    description: '',
+                    images: []
+                },
+                quantity: 1,
             }
+        },
+        computed:{
+            ...mapStores(useCartStore)
+        },
+        methods: {
+            incrementQuantity() {
+                this.quantity++;
+        },
+        decrementQuantity() {
+            if (this.quantity > 1) {
+                this.quantity--;
+            }
+        },
+        addToCart() {
+            this.cartStore.addItemToCart(this.product, this.quantity);
+        },
+    },
+        mounted() {
+            const productId = this.$route.params.id
+            fetch(`https://api.escuelajs.co/api/v1/products/${productId}`)
+                .then(response => response.json())
+                .then(data => {
+                    this.product = data
+                    console.log(this.product);
+                })
+                .catch(error => {
+                    console.error("Error fetching product details:", error)
+                })
         }
-    },
-     computed:{
-    ...mapStores(useCartStore)
-    },
-    mounted() {
-        const productId = this.$route.params.id
-        fetch(`https://api.escuelajs.co/api/v1/products/${productId}`)
-            .then(response => response.json())
-            .then(data => {
-                this.product = data
-                console.log(this.product);
-            })
-            .catch(error => {
-                console.error("Error fetching product details:", error)
-            })
+        
     }
-    
- }
  </script>
  <style>
  
