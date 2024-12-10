@@ -147,6 +147,20 @@
   .cart-total .amount{
     @apply  py-4 flex text-sm justify-between items-stretch content-stretch
   }
+
+  /* Product */
+  .product-card{
+    @apply grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-screen-md mx-auto justify-center content-center
+  }
+  .product-card .product-images{
+    @apply max-w-[300px] 
+  }
+  .product-card img{
+    @apply rounded-xl border border-grey shadow-md h-auto
+  }
+  .product-data .title{
+    @apply text-xl text-lila-primary font-bold mb-6
+  }
   /* Footer */
   footer{
     @apply w-full bg-lila-secondary py-16 mt-20
