@@ -22,10 +22,10 @@
                         </h2>
                     </div>
                     <p class="price">{{item.price}} €</p>
-                    <div class="price">
-                        <span>1</span>
+                    <div class="price cantidad">
+                        <span>{{ item.cantidad }}</span>
                     </div>
-                    <div class="price"><span>x</span> €</div>
+                    <div class="price subtotal"><span> {{  item.price * item.cantidad }}</span> €</div>
                     <button class="btn btn-danger" @click="cartStore.deleteItem(index)"><span class="fa-regular fa-circle-xmark text-lg text-red"></span>
                     </button>
                 </div>
@@ -34,10 +34,10 @@
                     <button class="button button-primary text-xs">
                         Continue shopping
                     </button>
-                    <button class="button button-white">
+                    <!-- <button class="button button-white">
                         Update cart shopping
-                    </button>
-                    <button class="button button-red">
+                    </button> -->
+                    <button class="button button-red" @click="cartStore.clearCart">
                         Clear cart
                     </button>
                     
@@ -50,15 +50,15 @@
                 <div class="cont" >
                     <div class="amount border-b border-grey">
                         <span>Subtotal</span>
-                        <span>xx €</span>
+                        <span>{{ cartStore.cartTotal}} €</span>
                     </div>
                     <div class="coupon border-b border-grey p-2 flex justify-center">
                         <label for="pr-coupon" class="hidden">coupon</label>
-                        <input  id="pr-coupon"  type="text" placeholder="Enter coupon code" class="form-input text-sm">
+                        <input id="pr-coupon"  type="text" placeholder="Enter coupon code" class="form-input text-sm">
                     </div>
                     <div class="amount">
                         <span>Total amount</span>
-                        <span>xx €</span>
+                        <span>{{ cartStore.cartTotal}} €</span>
                     </div>
                     <button class="button button-primary text-xs">Proceed to checkout</button>
 

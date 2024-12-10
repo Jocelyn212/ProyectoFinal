@@ -62,10 +62,10 @@
     @apply text-white uppercase font-bold text-xs tracking-widest relative ml-3 mb-2 drop-shadow-sm
   }
   .h-buttons{
-    @apply  text-sm font-bold drop-shadow-sm
+    @apply  text-sm font-bold drop-shadow-sm 
   }
   .h-buttons li{
-    @apply hover:text-amarillo cursor-pointer ml-8 transition
+    @apply hover:text-amarillo cursor-pointer  transition
   }
   .item-num{
     @apply  text-dark-grey ml-2 bg-amarillo py-[1px] px-[5px] rounded-xl
@@ -146,6 +146,20 @@
   }
   .cart-total .amount{
     @apply  py-4 flex text-sm justify-between items-stretch content-stretch
+  }
+
+  /* Product */
+  .product-card{
+    @apply grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-screen-md mx-auto justify-center content-center
+  }
+  .product-card .product-images{
+    @apply max-w-[300px] 
+  }
+  .product-card img{
+    @apply rounded-xl border border-grey shadow-md h-auto
+  }
+  .product-data .title{
+    @apply text-xl text-lila-primary font-bold mb-6
   }
   /* Footer */
   footer{
