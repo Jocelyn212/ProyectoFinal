@@ -108,5 +108,5 @@ export default {
 </script>
 
 <style>
-/* Agrega tus estilos aquí */
+
 </style>
