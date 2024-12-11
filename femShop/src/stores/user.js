@@ -1,10 +1,13 @@
 import { defineStore } from "pinia";
+import { useCartStore } from "./cart";
 import axios from "axios";
+import { updateCarts, getCarts } from "../firebase";
 
 export const useActiveUserStore = defineStore("activeUser", {
   state: () => ({
     login: false,
     profile: {
+      id: null,
       email: null,
       name: null,
       role: null,
@@ -12,6 +15,7 @@ export const useActiveUserStore = defineStore("activeUser", {
     },
   }),
   actions: {
+    // Con el token, llama a la API para tener los datos y actualizar el state. También llama a cart para actualizar el cart, si tiene.
     async getUserData(token) {
       try {
         const config = {
@@ -23,38 +27,58 @@ export const useActiveUserStore = defineStore("activeUser", {
           "https://api.escuelajs.co/api/v1/auth/profile",
           config
         );
-        console.log(response);
         this.profile = {
+          id: response.data.id,
           email: response.data.email,
           name: response.data.name,
           role: response.data.role,
           avatar: response.data.avatar,
         };
         this.login = true;
+        // Guarda el Token en el localStorage
         this.storeLogin(token);
-        console.log(this.profile);
-      } catch {
+        // Carga el cart del usuario
+        const cartStore = useCartStore();
+        cartStore.getUserCart(this.profile.id);
+      } catch (error) {
         console.log(error);
       }
-      console.log(token);
     },
+
     storeLogin(token) {
       localStorage.setItem("token", token);
     },
-    checkLogin() {
-      const token = localStorage.getItem("token");
-      token && this.getUserData(token);
-      console.log(this.profile);
+
+    updateItems(items) {
+      const cartStore = useCartStore();
+      cartStore.setItems(items);
     },
+
+    checkIfUserIsLogged() {
+      // Revisa si hay un token en localstorage
+      const token = localStorage.getItem("token");
+      // Si hay token => llamo a la API y busco los datos del usuario
+      if (token) {
+        this.getUserData(token);
+      } else {
+        // Si no hay token, traigo el cart del localStorage
+        const cartStore = useCartStore();
+        cartStore.getLocalStorageCart();
+      }
+    },
+
     logOut() {
+      localStorage.removeItem("token");
+      const cartStore = useCartStore();
+      cartStore.clearItems();
       this.profile = {
+        id: null,
         email: null,
         name: null,
         role: null,
         avatar: null,
       };
       this.login = false;
-      localStorage.removeItem("token");
     },
   },
   getters: {},

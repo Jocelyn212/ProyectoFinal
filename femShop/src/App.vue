@@ -14,6 +14,7 @@ import Footer from "./components/Footer.vue";
 import { useCartStore} from "./stores/cart"
 import { useActiveUserStore } from "./stores/user";
 import {mapStores} from "pinia"
+import { onMounted } from "vue";
 
 export default {
     name: "App",
@@ -22,17 +23,13 @@ export default {
     Header,
     Footer
   },
-  mounted() {
-    this.cartStore.getItemsFromFirebase()
-  },
   computed:{
     ...mapStores(useCartStore, useActiveUserStore)
 },
 setup() {
     const activeUserStore = useActiveUserStore();
-    activeUserStore.checkLogin();
+    activeUserStore.checkIfUserIsLogged();
   }
-
 }
 </script>
 <style >
