@@ -44,10 +44,13 @@
                     <div class="mb-6">
                         <QuantitySelector v-model="quantity" />
                     </div>
-                    <button class="button button-primary"  @click="addToCart"
+                    <button class="button button-primary mr-4"  @click="addToCart"
                     >
                         Add to cart
                     </button>
+                    <RouterLink to="/cart"  class="button button-white text-center ">
+                        Go to cart
+                    </RouterLink>
                 </div>
             </div>
         </div>

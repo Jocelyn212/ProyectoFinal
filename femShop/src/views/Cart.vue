@@ -11,7 +11,8 @@
                     <div class="text-center">Delete</div>
                 </div>
                 <div v-for="item in cartStore.items" class="items cart-cols ">
-                    <div class="item flex text-xs col-span-3 items-center">
+                    <div class="item flex text-xs col-span-3 items-center cursor-pointer"
+                        @click="showProductDetails(item.id)">
                         <img v-if="item.images" :src="item.images[0]" :alt="item.title" class="card-img" />
                         <h2 class="text-lila-primary font-bold">    {{item.title}}
                         </h2>
@@ -26,9 +27,9 @@
                 </div>
 
                 <div class="buttons">
-                    <button class="button button-primary text-xs">
+                    <RouterLink to="/"  class="button button-primary text-xs text-center">
                         Continue shopping
-                    </button>
+                    </RouterLink>
                     <button class="button button-white">
                         Update cart
                     </button>
@@ -76,11 +77,14 @@
     export default {
         name: "Cart",
         components: { QuantitySelector },
-        data() {
-     
-        },
+
         computed:{
             ...mapStores(useCartStore)
+        },
+        methods: {
+            showProductDetails(productId) {
+                this.$router.push(`/product/${productId}`);
+            },
         }
      }
   </script>

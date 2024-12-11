@@ -11,9 +11,10 @@
   main{
     @apply grow w-full md:pt-8 pt-2;
   }
+
 /* Titles */
   .title-1{
-    @apply text-lila-primary text-3xl drop-shadow-sm font-bold
+    @apply text-lila-primary text-4xl drop-shadow-sm font-bold
   }
   .title-2{
     @apply text-lila-primary text-lg drop-shadow-sm font-bold
@@ -39,7 +40,7 @@
     @apply bg-lila-secondary rounded-xl text-dark-grey border border-lila-secondary  text-xs ;
   }
   .button-white{
-    @apply bg-white rounded-xl text-dark-grey border border-grey  text-xs ;
+    @apply bg-white rounded-xl text-dark-grey border border-grey ;
   }
   .button-red{
     @apply bg-white rounded-xl text-red border border-red  text-xs ;
@@ -70,14 +71,15 @@
   .item-num{
     @apply  text-dark-grey ml-2 bg-amarillo py-[1px] px-[5px] rounded-xl
   }
-  header .dropdown-button{
-    @apply p-4 bg-amarillo text-sm hover:brightness-90 hover:text-white hover:transition-all
+  .dropdown-button{
+    @apply px-4 py-3 bg-amarillo text-sm hover:brightness-90  hover:transition-all rounded-xl z-50
   }
-  header .dropdown-menu{
-    @apply absolute  border border-grey shadow-sm  w-full z-50 bg-light-grey text-sm text-dark-grey
+  .dropdown-menu{
+    @apply absolute bg-amarillo   shadow-sm  w-full z-30 text-sm text-dark-grey top-[37px]
   }
-  header .dropdown-item{
-    @apply block p-5 hover:bg-white
+
+  .dropdown-menu li{
+    @apply cursor-pointer text-center py-2 w-full hover:bg-white  hover:transition-all 
   }
   header .links{
     @apply flex flex-nowrap text-dark-grey text-sm h-full pb-2 

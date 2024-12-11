@@ -1,6 +1,6 @@
 <template>
-    <header class="relative">
-        <div class="container flex  items-center justify-between py-4 text-xs">
+    <header class="sm:sticky relative">
+        <div class="container flex  items-center justify-between py-4 text-xs bg-white">
             <span>Need help? Call us: (+98) 0234 456 789</span>
             <span><span class="fa-solid fa-truck mr-2"></span>Track your order</span>
         </div>     
@@ -32,7 +32,7 @@
                 </div>
             </div>
         </div>
-        <nav class="w-full bg-light-grey shadow">
+        <!-- <nav class="w-full bg-light-grey shadow">
             <div class="container justify-between py-0 items-end">
                 <div class="relative inline-block">
                     <button class="dropdown-button " @click="toggleMenu">Browse categories 
@@ -54,7 +54,9 @@
                     </li>
                 </ul>
             </div>
-        </nav>
+        </nav> -->
+        
+    <!-- MODAL -->
         <div v-if="isHidden" class="modal-overlay" @click.self="toggleSignIn()">
             <div class="modal">
                 <button class="close-btn" @click="toggleSignIn()"><i class="fa-solid fa-xmark"></i></button>
@@ -81,16 +83,16 @@ export default {
     name: "Header",
     data() {
         return {
-        isOpen: false, 
+        //isOpen: false, 
         isHidden: false,
         usuario: "",
         password: ""
         };
     },
     methods: {
-        toggleMenu() {
-        this.isOpen = !this.isOpen;
-        },
+        // toggleMenu() {
+        // this.isOpen = !this.isOpen;
+        // },
         toggleSignIn() {
           this.isHidden = !this.isHidden
         },
@@ -120,6 +122,10 @@ export default {
 }
 </script>
 <style>
+header{
+    top: 0;
+    z-index:100
+  } 
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -158,6 +164,6 @@ export default {
     border: 1px solid #ccc;
     border-radius: 5px;
   }
-
+  
 
 </style>
