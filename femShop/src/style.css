@@ -170,14 +170,17 @@
   .product-data .description{
     @apply text-sm mb-4
   }
-  .qty{
-    @apply flex items-center gap-3 mb-6
+  .QuantitySelector{
+    @apply flex items-center gap-3 
   }
-  .product-data .txt{
+  .product-data .txt, .QuantitySelector .txt{
     @apply font-bold text-sm
   }
-  .qty button{
-    @apply border rounded-none px-2 leading-5 border-gray-300 hover:bg-light-grey
+  .QuantitySelector button{
+    @apply border rounded-sm px-2 leading-6 border-gray-300 hover:bg-light-grey
+  }
+  .QuantitySelector .qtyn{
+    @apply font-bold text-rosa
   }
   /* Footer */
   footer{

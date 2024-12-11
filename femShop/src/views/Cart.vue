@@ -1,11 +1,6 @@
 <template>
 <main  class="w-full">
     <div class="container">
-        <!--  <div class="cart">
-            <div v-for="(item) in cartStore.items">
-            {{ item.title }}
-            <button class="btn btn-danger" @click="cartStore.deleteItem(index)">X</button>
-        </div> -->
         <div class="cart-container max-w-screen-lg mx-auto">
             <div class="product-list">
                 <div class="titles cart-cols">
@@ -23,7 +18,7 @@
                     </div>
                     <p class="price">{{item.price}} €</p>
                     <div class="price cantidad">
-                        <span>{{ item.cantidad }}</span>
+                        <span><QuantitySelector v-model="item.cantidad" /></span>
                     </div>
                     <div class="price subtotal"><span> {{  item.price * item.cantidad }}</span> €</div>
                     <button class="btn btn-danger" @click="cartStore.deleteItem(index)"><span class="fa-regular fa-circle-xmark text-lg text-red"></span>
@@ -34,9 +29,9 @@
                     <button class="button button-primary text-xs">
                         Continue shopping
                     </button>
-                    <!-- <button class="button button-white">
-                        Update cart shopping
-                    </button> -->
+                    <button class="button button-white">
+                        Update cart
+                    </button>
                     <button class="button button-red" @click="cartStore.clearCart">
                         Clear cart
                     </button>
@@ -74,15 +69,24 @@
     </main>
 </template>
 <script>
+    import QuantitySelector from "../components/QuantitySelector.vue";
     import { useCartStore} from "../stores/cart"
     import {mapStores} from "pinia"
+    
     export default {
         name: "Cart",
+        components: { QuantitySelector },
+        data() {
+     
+        },
         computed:{
             ...mapStores(useCartStore)
         }
      }
   </script>
   <style>
+  .QuantitySelector .qty{
+    display:none!important
+  }
   </style>
  

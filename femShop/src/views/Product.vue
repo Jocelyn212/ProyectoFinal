@@ -41,23 +41,9 @@
                     <p class="description">
                          {{ product.description }} 
                     </p>
-
-                    <div class="qty ">
-                        <span class="txt">Quantity:</span>
-                        <button 
-                        @click="decrementQuantity"
-                        :disabled="quantity <= 1"
-                        >
-                        -
-                        </button>
-                        <span class="txt text-rosa">{{ quantity }}</span>
-                        <button 
-                        @click="incrementQuantity"
-                        >
-                        +
-                        </button>
+                    <div class="mb-6">
+                        <QuantitySelector v-model="quantity" />
                     </div>
-
                     <button class="button button-primary"  @click="addToCart"
                     >
                         Add to cart
@@ -68,11 +54,13 @@
     </main>
  </template>
  <script>
+    import QuantitySelector from "../components/QuantitySelector.vue";
     import { useCartStore} from "../stores/cart"
     import {mapStores} from "pinia"
     import {getProduct} from "../firebase"
     export default {
         name: "Product",
+        components: { QuantitySelector },
     data() {
             return {
                 product: {
@@ -89,14 +77,6 @@
             ...mapStores(useCartStore)
         },
         methods: {
-            incrementQuantity() {
-                this.quantity++;
-        },
-        decrementQuantity() {
-            if (this.quantity > 1) {
-                this.quantity--;
-            }
-        },
         addToCart() {
             this.cartStore.addItemToCart(this.product, this.quantity);
         },

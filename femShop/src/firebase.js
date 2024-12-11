@@ -24,9 +24,17 @@ const firebaseConfig2 = {
   messagingSenderId: "576112958325",
   appId: "1:576112958325:web:bc3b3d5a39c6516fd1913c",
 };
-
+const firebaseConfig3 = {
+  apiKey: "AIzaSyC67X4TZZiSuKMOu5AneWXL2QWFLtUmVrk",
+  authDomain: "cris-aa1f3.firebaseapp.com",
+  databaseURL: "https://cris-aa1f3-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "cris-aa1f3",
+  storageBucket: "cris-aa1f3.firebasestorage.app",
+  messagingSenderId: "76141387735",
+  appId: "1:76141387735:web:1aefce9328e926b7b1b592"
+};
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig3);
 // Get a reference to the database service
 const db = getDatabase(app);
 
