@@ -1,37 +1,69 @@
 <template>
     <header>
-        <div class="container flex  items-center justify-between py-4 text-xs bg-white">
-            <span>Need help? Call us: (+98) 0234 456 789</span>
-            <span><span class="fa-solid fa-truck mr-2"></span>Track your order</span>
+        <div class="container flex sm:h-auto h-0   items-center justify-between sm:py-4 p-0 text-xs bg-white">
+            <span class="sm:inline-block hidden">Need help? Call us: (+98) 0234 456 789</span>
+            <span class="sm:inline-block hidden"><span class="fa-solid fa-truck mr-2"></span>Track your order</span>
         </div> 
     <!-- Header with gradient -->
         <div class="header-gradient ">
-            <div class="container items-center justify-between py-4">
+            <div class="container items-center justify-between sm:py-4 py-1">
                 <RouterLink to="/">
                     <div class="logo">
                             <img src="../img/FemShopH.png" alt="FemShop - Online Shop">
                             <h1 class="h-slogan">Online Shop</h1>
                     </div>
                 </RouterLink>
-                <div class="h-buttons">
-                    <ul class="flex sm:items-center items-start gap-x-4 sm:gap-x-8 sm:gap-y-0 gap-y-4 sm:flex-nowrap flex-wrap  sm:w-auto w-[120px] ">
+            <!-- Mobile Menu -->
+                <div class="sm:hidden flex justify-end w-1/2 mr-5 gap-[40%]"  >
+                    <div class="link flex items-center  whitespace-nowrap font-bold text-xs gap-2 " v-if="activeUserStore.profile.avatar">
+                        <img :src="activeUserStore.profile.avatar" class="w-8 rounded-full border-amarillo border-2 shadow-md" />
+                        {{activeUserStore.profile.name}}
+                    </div>
+                    <div class="mobile-menu relative">
+                        <div class="hamburger cursor-pointer rounded-lg px-2 py-1 hover:bg-lila-secondary hover:transition-all" @click="toggleMobileMenu()">
+                            <span class="fa-solid fa-bars text-4xl"></span>
+                        </div>
+                        <ul v-if="mobileMenu" class="flex flex-col absolute items-start gap-4 flex-nowrap  w-auto text-dark-grey bg-white p-6 rounded-lg border right-0"   @click="toggleMobileMenu()">
+                            <li class="link hover:text-lila-primary" v-if="!activeUserStore.profile.avatar" @click="toggleSignIn">
+                                <span class="fa-regular fa-user mr-2" ></span>Sign in
+                            </li>
+                            <li class="link whitespace-nowrap hover:text-lila-primary" v-if="activeUserStore.profile.avatar" @click="logOut">
+                                <span class="fa-regular fa-user mr-2 " ></span>Log out
+                            </li>
+                            <li class="link whitespace-nowrap hover:text-lila-primary">
+                                <RouterLink to="/">
+                                <span class="fa-solid fa-store mr-2 "></span>Shop
+                                </RouterLink>
+                            </li>
+                            <li class="link whitespace-nowrap hover:text-lila-primary">
+                                <RouterLink to="/cart">
+                                <span class="fa-solid fa-cart-shopping mr-2 "></span>Cart<sup class="item-num">{{ cartStore.cartSize }}</sup>
+                                </RouterLink>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div> 
+            <!-- Standard Menu -->
+                <div class="h-buttons sm:block hidden">
+                    <ul class="flex items-center gap-x-8 gap-y-0 flex-nowrap  w-auto">
                         <li class="link" v-if="!activeUserStore.profile.avatar" @click="toggleSignIn">
-                            <span class="fa-regular fa-user sm:mr-2 mr-3" ></span>Sign in
+                            <span class="fa-regular fa-user mr-2" ></span>Sign in
                         </li>
                         <li class="link flex items-center  whitespace-nowrap gap-2" v-if="activeUserStore.profile.avatar">
-                            <img :src="activeUserStore.profile.avatar" class="sm:w-8 w-5 rounded-full border-amarillo sm:border-2 sm:shadow-md">{{activeUserStore.profile.name}}
+                            <img :src="activeUserStore.profile.avatar" class="w-8 rounded-full border-amarillo sm:border-2 sm:shadow-md">{{activeUserStore.profile.name}}
                         </li>
                         <li class="link whitespace-nowrap" v-if="activeUserStore.profile.avatar" @click="logOut">
-                            <span class="fa-regular fa-user sm:mr-2 mr-4" ></span>Log out
+                            <span class="fa-regular fa-user mr-2 " ></span>Log out
                         </li>
                         <li class="link whitespace-nowrap">
                             <RouterLink to="/">
-                            <span class="fa-solid fa-store  sm:mr-2 mr-3"></span>Shop
+                            <span class="fa-solid fa-store mr-2 "></span>Shop
                             </RouterLink>
                         </li>
                         <li class="link whitespace-nowrap">
                             <RouterLink to="/cart">
-                            <span class="fa-solid fa-cart-shopping  sm:mr-2 mr-3"></span>Cart<sup class="item-num">{{ cartStore.cartSize }}</sup>
+                            <span class="fa-solid fa-cart-shopping mr-2 "></span>Cart<sup class="item-num">{{ cartStore.cartSize }}</sup>
                             </RouterLink>
                         </li>
                     </ul>
@@ -91,6 +123,7 @@ export default {
     data() {
         return {
         isHidden: false,
+        mobileMenu: false,
         usuario: "",
         password: ""
         };
@@ -98,6 +131,9 @@ export default {
     methods: {
         toggleSignIn() {
           this.isHidden = !this.isHidden
+        },
+        toggleMobileMenu() {
+          this.mobileMenu = !this.mobileMenu
         },
         async login() {
             try {

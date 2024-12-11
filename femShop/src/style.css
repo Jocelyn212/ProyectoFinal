@@ -9,7 +9,7 @@
     @apply max-w-screen-xl mx-auto w-full md:px-8 px-2 flex  ;
   }  
   main{
-    @apply grow w-full md:pt-8 pt-2;
+    @apply grow w-full md:pt-8 pt-2 relative z-30;
   }
 
 /* Titles */
@@ -17,7 +17,7 @@
     @apply text-lila-primary text-4xl drop-shadow-sm font-bold
   }
   .title-2{
-    @apply text-lila-primary text-lg drop-shadow-sm font-bold
+    @apply text-lila-primary text-xl drop-shadow-sm font-bold
   }
   
 
@@ -26,12 +26,12 @@
     @apply flex 
   }
   .form-input{
-    @apply rounded-md border px-3 py-2 text-dark-grey border-grey outline-none relative
+    @apply rounded-md border px-3 sm:py-3 py-2 text-dark-grey border-grey outline-none relative
   }
 
 /* Buttons */
   .button {
-    @apply   font-bold  px-6 py-2  cursor-pointer hover:transition-all hover:brightness-90;
+    @apply   font-bold  px-6 sm:py-3 py-2  cursor-pointer hover:transition-all hover:brightness-90;
   }
   .button-primary{
     @apply bg-amarillo  rounded-xl text-dark-grey border border-grey;
@@ -66,7 +66,7 @@
     @apply flex justify-start items-end relative sm:flex-row flex-col
   }
   header .logo img{
-    @apply w-[120px];
+    @apply sm:w-[120px] w-[90px];
   }
   .header-gradient{
   @apply  bg-custom-gradient w-full  text-white shadow-md
@@ -84,14 +84,14 @@
     @apply  text-dark-grey ml-2 bg-amarillo py-[1px] px-[5px] rounded-xl
   }
   .dropdown-button{
-    @apply px-4 py-3 bg-amarillo text-base hover:brightness-90  hover:transition-all rounded-xl font-bold
+    @apply px-4 sm:py-3 py-2 bg-white border border-amarillo text-base hover:brightness-90  hover:transition-all rounded-xl font-bold
   }
   .dropdown-menu{
-    @apply absolute bg-amarillo  rounded-b-xl  shadow-sm  w-full text-base text-dark-grey top-[38px]
+    @apply absolute bg-white  rounded-b-xl  shadow-sm  w-full text-base text-dark-grey sm:top-[41px] top-[33px] border border-t-0 border-amarillo
   }
 
   .dropdown-menu li{
-    @apply cursor-pointer text-center py-2 w-full bg-amarillo hover:brightness-90  hover:transition-all rounded-xl 
+    @apply cursor-pointer text-center py-2 w-full bg-white hover:brightness-90  hover:transition-all last:rounded-b-xl
   }
   header .links{
     @apply flex flex-nowrap text-dark-grey text-sm h-full pb-2 
@@ -126,7 +126,7 @@
     @apply py-3 
   }
   .catalog-headings{
-    @apply flex sm:justify-between justify-center mt-2 pt-4 sm:pt-0 sm:mt-8 mb-2  gap-y-4 sm:relative fixed top-[200px] left-0 bg-white sm:top-auto  z-40 flex-col sm:flex-row items-center w-full sm:mb-10
+    @apply flex sm:justify-between justify-center mt-2 pt-6 sm:pt-0 sm:mt-8 mb-2  gap-y-4 sm:relative fixed top-[80px] left-0 bg-white sm:top-auto  z-40 flex-col sm:flex-row items-center w-full sm:mb-10
   }
 
 /* cart */
