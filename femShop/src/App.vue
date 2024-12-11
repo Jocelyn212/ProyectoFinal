@@ -26,18 +26,10 @@ export default {
   computed:{
     ...mapStores(useCartStore, useActiveUserStore)
 },
-// async mounted() {
-//     const activeUserStore = useActiveUserStore();
-//     const cartStore = useCartStore();
-//     await activeUserStore.checkLogin();
-//     cartStore.getItemsFromFirebase()
-//   }
 setup() {
     const activeUserStore = useActiveUserStore();
-    activeUserStore.checkLogin();
-    // cartStore.getItemsFromFirebase()
+    activeUserStore.checkIfUserIsLogged();
   }
-
 }
 </script>
 <style >

@@ -27,6 +27,7 @@ export const useCartStore = defineStore("cart", {
         //Si no esta logueado => guardo en localstorage. Como es un array hay que guardarlo como objeto (JSON stringify)
         console.log("Guardo en localstorage");
         localStorage.setItem("cart", JSON.stringify(this.items));
+        console.log("items actualizados", this.items);
       } else {
         // Si esta logueado => guardo en la BD (Firebase)
         updateCarts(userID, this.items);
@@ -46,13 +47,46 @@ export const useCartStore = defineStore("cart", {
 
     deleteItem(index) {
       this.items.splice(index, 1);
+      // const userID = this.getUserID();
+      const userID = useActiveUserStore().profile.id;
+      updateCarts(userID, this.items);
+      localStorage.setItem("cart", JSON.stringify(this.items));
+    },
+
+    clearCart() {
+      this.items = [];
+      localStorage.removeItem("cart");
       const userID = this.getUserID();
       updateCarts(userID, this.items);
     },
-    clearCart() {
+
+    clearItems() {
       this.items = [];
-      const userID = this.getUserID();
-      updateCarts(userID, this.items);
+    },
+
+    // Trae el cart del usuario
+    async getUserCart(userID) {
+      // Trae los datos de Firebase del usuario
+      const cart = await getCarts(userID);
+      // Revisa si hay items en el carrito actual (del localStorage)
+      if (this.cartSize === 0) {
+        // Si hay 0 items solamente actualiza el estado con los items que trajo de Firebase
+        this.items = cart;
+      } else {
+        // Si ya hay items, agrega uno a uno (esto es para que revise si algun producto ya esta y no se repitan.)
+        console.log("Hay items", this.items);
+        cart.forEach((product) => {
+          this.addItemToCart(product, product.cantidad);
+        });
+        // Borra el localStorage
+        localStorage.removeItem("cart");
+      }
+    },
+    getLocalStorageCart() {
+      const cart = localStorage.getItem("cart");
+      if (cart !== null) {
+        this.items = JSON.parse(cart);
+      }
     },
   },
   getters: {

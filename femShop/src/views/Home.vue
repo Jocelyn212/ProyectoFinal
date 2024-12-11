@@ -33,7 +33,16 @@ export default {
             try {
                 const response = await axios.get(`https://api.escuelajs.co/api/v1/products/?categoryId=5`);
                 this.products = response.data;
-                console.log(this.products)
+                console.log("aca",this.products)
+                this.products.forEach(prod => {
+                    if(prod.images[0].startsWith("[")) {
+                        if(prod.images[0].endsWith("]")) {
+                            prod.images[0] = prod.images[0].slice(2,-2)
+                         } else {
+                            prod.images[0] = prod.images[0].slice(2,-1)
+                        }
+                    }})
+                    console.log("aca2",this.products)
             } catch(error) {
                 console.log(error)
             }
