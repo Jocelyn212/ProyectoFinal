@@ -70,6 +70,7 @@
  <script>
     import { useCartStore} from "../stores/cart"
     import {mapStores} from "pinia"
+    import {getProduct} from "../firebase"
     export default {
         name: "Product",
     data() {
@@ -99,10 +100,21 @@
         addToCart() {
             this.cartStore.addItemToCart(this.product, this.quantity);
         },
+        async getProduct(productId) {
+            try {
+                const response = await getProduct(productId);
+                this.product = response;
+                console.log(response)
+            } catch(error) {
+                console.log(error)
+            }
+        }
     },
         mounted() {
             const productId = this.$route.params.id
-            fetch(`https://api.escuelajs.co/api/v1/products/${productId}`)
+            this.getProduct(productId)
+            
+           /*  fetch(`https://api.escuelajs.co/api/v1/products/${productId}`)
                 .then(response => response.json())
                 .then(data => {
                     this.product = data
@@ -110,7 +122,7 @@
                 })
                 .catch(error => {
                     console.error("Error fetching product details:", error)
-                })
+                }) */
         }
         
     }

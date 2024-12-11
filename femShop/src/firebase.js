@@ -26,7 +26,7 @@ const firebaseConfig2 = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig2);
+const app = initializeApp(firebaseConfig);
 // Get a reference to the database service
 const db = getDatabase(app);
 
@@ -41,6 +41,40 @@ export async function getCarts(userId) {
   const dbRef = ref(db);
   try {
     const snapshot = await get(child(dbRef, `carts/${userId}`));
+    if (snapshot.exists()) {
+      console.log(snapshot.val());
+      return snapshot.val();
+    } else {
+      console.log("No data available");
+      return [];
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Getter method for products
+export async function getProduct(productId) {
+  const dbRef = ref(db);
+  try {
+    const snapshot = await get(child(dbRef, `productos/${productId}`));
+    if (snapshot.exists()) {
+      console.log(snapshot.val());
+      return snapshot.val();
+    } else {
+      console.log("No data available");
+      return null;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Getter method for all products
+export async function getAllProducts() {
+  const dbRef = ref(db);
+  try {
+    const snapshot = await get(child(dbRef, `productos`));
     if (snapshot.exists()) {
       console.log(snapshot.val());
       return snapshot.val();
