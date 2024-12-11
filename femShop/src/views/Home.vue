@@ -1,21 +1,18 @@
 <template>
     <main>
-     <div class="container flex-col">
+     <div class="container flex-col relative">
         <!-- <div class="category-filter mb-8">
              <button @click="filterByCategory(null)" class="button">All</button>
              <button v-for="category in categories" :key="category.id" @click="filterByCategory(category)" class="button">{{ category.name }}</button>
          </div> -->
+         
+         <h2 v-if="products" class="title-1 text-center mt-4 relative z-20 sm:block hidden">{{ selectedCategory ? selectedCategory.name : 'All products' }}</h2>
 
-
-
-
-         <h2 v-if="products" class="title-1 text-center mt-4">{{ selectedCategory ? selectedCategory.name : 'All products' }}</h2>
-
-         <div class="catalog-headings flex justify-between mt-8 mb-4 flex-wrap gap-y-4 sm:flex-nowrap">
-
+         <div class="catalog-headings">
         <!-- Dropdown categorias -->
-            <div class="relative inline-block">
-                <button class="dropdown-button " @click="toggleMenu">Browse categories 
+            <div class="relative inline-block w-[65%] sm:w-auto z-20 ">
+               
+                <button class="dropdown-button w-full " @click="toggleMenu">Browse categories 
                     <span v-if="CatisOpen" class="fa-solid fa-chevron-up ml-2 text-white"></span>
                     <span  v-else class="fa-solid fa-chevron-down ml-2 text-white"></span>
                 </button>
@@ -24,15 +21,16 @@
                     <li v-for="category in categories" :key="category.id" @click="filterByCategory(category)" >{{ category.name }}</li>
                 </ul>
             </div>
+        
          <!-- Search -->
-            <form class="self-center mb-8" @submit.prevent="searchProducts">
+            <form class="self-center mb-0 z-10 relative" @submit.prevent="searchProducts">
                 <label for="pr-search" class="hidden">Search</label>
-                <input v-model="searchQuery" id="pr-search" type="text" placeholder="Search ..." class="form-input" />
+                <input v-model="searchQuery" id="pr-search" type="text" placeholder="Search ..." class="form-input sm:w-[250px] " />
                 <button class="button button-primary -ml-[12px] relative">Search</button>
             </form>
-
+            <h2 v-if="products" class="title-2 text-center pb-2 relative  sm:hidden block">{{ selectedCategory ? selectedCategory.name : 'All products' }}</h2>
         </div>
-
+        <!-- Shop -->
          <div class="shop-container">
              <Card v-for="product in filteredProducts" :key="product.id" :product="product" @click=""/>
          </div>

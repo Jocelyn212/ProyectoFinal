@@ -34,7 +34,7 @@ const firebaseConfig3 = {
   appId: "1:76141387735:web:1aefce9328e926b7b1b592"
 };
 // Initialize Firebase
-const app = initializeApp(firebaseConfig3);
+const app = initializeApp(firebaseConfig);
 // Get a reference to the database service
 const db = getDatabase(app);
 

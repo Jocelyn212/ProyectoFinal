@@ -1,6 +1,6 @@
 <template>
 <main  class="w-full">
-    <div class="container">
+    <div class="container mt-5">
         <div class="cart-container max-w-screen-lg mx-auto">
             <div class="product-list">
                 <div class="titles cart-cols">
@@ -27,13 +27,15 @@
                 </div>
 
                 <div class="buttons">
-                    <RouterLink to="/"  class="button button-primary text-xs text-center">
-                        Continue shopping
-                    </RouterLink>
-                    <button class="button button-white">
+                    <button  class="button button-primary  text-center text-sm">
+                        <RouterLink to="/" >
+                            Continue shopping
+                        </RouterLink>
+                    </button>
+                    <button class="button button-white text-sm">
                         Update cart
                     </button>
-                    <button class="button button-red" @click="cartStore.clearCart">
+                    <button class="button button-red text-sm" @click="cartStore.clearCart">
                         Clear cart
                     </button>
                     
