@@ -32,7 +32,7 @@
                             Continue shopping
                         </RouterLink>
                     </button>
-                    <button class="button button-white text-sm">
+                    <button class="button button-white text-sm" @click="saveCart">
                         Update cart
                     </button>
                     <button class="button button-red text-sm" @click="cartStore.clearCart">
@@ -87,6 +87,11 @@
             showProductDetails(productId) {
                 this.$router.push(`/product/${productId}`);
             },
+            saveCart() {
+                const cartStore = useCartStore()
+                cartStore.updateAllCart()
+
+            }
         }
      }
   </script>
