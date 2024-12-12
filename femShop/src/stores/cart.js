@@ -74,7 +74,6 @@ export const useCartStore = defineStore("cart", {
         this.items = cart;
       } else {
         // Si ya hay items, agrega uno a uno (esto es para que revise si algun producto ya esta y no se repitan.)
-        console.log("Hay items", this.items);
         cart.forEach((product) => {
           this.addItemToCart(product, product.cantidad);
         });
@@ -86,6 +85,16 @@ export const useCartStore = defineStore("cart", {
       const cart = localStorage.getItem("cart");
       if (cart !== null) {
         this.items = JSON.parse(cart);
+      }
+    },
+    updateAllCart() {
+      const userID = this.getUserID();
+      if (userID == null) {
+        //Si no esta logueado => guardo en localstorage. Como es un array hay que guardarlo como objeto (JSON stringify)
+        localStorage.setItem("cart", JSON.stringify(this.items));
+      } else {
+        // Si esta logueado => guardo en la BD (Firebase)
+        updateCarts(userID, this.items);
       }
     },
   },
