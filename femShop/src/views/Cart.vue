@@ -4,25 +4,25 @@
         <div class="cart-container max-w-screen-lg mx-auto">
             <div class="product-list">
                 <div class="titles cart-cols">
-                    <div class="col-span-3 ">Product</div>
-                    <div class="text-center">Price</div>
-                    <div class="text-center">Quantity</div>
-                    <div class="text-center">Subtotal</div>
-                    <div class="text-center">Delete</div>
+                    <div class="md:col-span-3 col-span-2 ">Product</div>
+                    <div class="">Price</div>
+                    <div class="md:col-span-3 col-span-2 sm:text-left text-center">Quantity</div>
+                    <div class="col-span-2 ">Subtotal</div>
+                    <div class="">Delete</div>
                 </div>
                 <div v-for="item in cartStore.items" class="items cart-cols ">
-                    <div class="item flex text-xs col-span-3 items-center cursor-pointer"
+                    <div class="item flex text-xs md:col-span-3 col-span-2 items-center cursor-pointer md:flex-row flex-col"
                         @click="showProductDetails(item.id)">
-                        <img v-if="item.images" :src="item.images[0]" :alt="item.title" class="card-img" />
-                        <h2 class="text-lila-primary font-bold">    {{item.title}}
+                        <img v-if="item.images" :src="item.images[0]" :alt="item.title" class="card-img " />
+                        <h2 class="text-lila-primary font-bold md:mt-0 mt-1 md:text-left text-center">    {{item.title}}
                         </h2>
                     </div>
-                    <p class="price">{{item.price}} €</p>
-                    <div class="price cantidad">
+                    <p class="price ">{{item.price}} €</p>
+                    <div class="cantidad md:col-span-3 col-span-2">
                         <span><QuantitySelector v-model="item.cantidad" /></span>
                     </div>
-                    <div class="price subtotal"><span> {{  item.price * item.cantidad }}</span> €</div>
-                    <button class="btn btn-danger" @click="cartStore.deleteItem(index)"><span class="fa-regular fa-circle-xmark text-lg text-red"></span>
+                    <div class="price subtotal col-span-2"><span> {{  item.price * item.cantidad }}</span> €</div>
+                    <button class="btn btn-danger !text-left" @click="cartStore.deleteItem(index)"><span class="fa-regular fa-circle-xmark text-lg text-red"></span>
                     </button>
                 </div>
 
@@ -58,30 +58,51 @@
                         <span>Total amount</span>
                         <span>{{ cartStore.cartTotal}} €</span>
                     </div>
-                    <button class="button button-primary text-xs">Proceed to checkout</button>
-
+                    <button class="button button-primary text-xs" v-if="isAuthenticated" @click="toggleCheckout()">Proceed to checkout</button>
+                    <button v-else class="button button-white text-xs" @click="toggleSignIn">Login to checkout</button>
+            <!-- MODAL Checkout -->
+                    <div v-if="isCheckout" class="modal-overlay" @click.self="toggleCheckout()">
+                        <div class="modal">
+                            <button class="close-btn" @click="toggleCheckout()"><i class="fa-solid fa-xmark"></i></button>
+                            <h2 class="text-lg font-bold mb-4">Checkout</h2>
+                            <div>
+                                    <span>Total amount</span>
+                                    <span>{{ cartStore.cartTotal}} €</span>
+                                <button class="button button-primary">Confirm</button>
+                            </div>
+                        </div>
+                    </div>
+            <!-- MODAL Log In -->
+                <LoginModal v-if="isHidden" :isHidden="isHidden" @close="toggleSignIn" />
+       
                 </div>
-  
             </div>
-            
-        
-
-        
+        </div>
     </div>
-</div>
-    </main>
+</main>
 </template>
 <script>
     import QuantitySelector from "../components/QuantitySelector.vue";
+    import LoginModal from "../components/LoginModal.vue";
     import { useCartStore} from "../stores/cart"
+    import { useActiveUserStore} from "../stores/user"
     import {mapStores} from "pinia"
     
     export default {
         name: "Cart",
-        components: { QuantitySelector },
+        data() {
+            return {
+                isHidden: false,
+                isCheckout: false,
+            };
+        },
+        components: { QuantitySelector, LoginModal },
 
         computed:{
-            ...mapStores(useCartStore)
+            ...mapStores(useCartStore, useActiveUserStore),
+            isAuthenticated() {
+                return !!this.activeUserStore.profile?.avatar;
+            },
         },
         methods: {
             showProductDetails(productId) {
@@ -90,14 +111,24 @@
             saveCart() {
                 const cartStore = useCartStore()
                 cartStore.updateAllCart()
-
-            }
+            },
+            toggleCheckout() {
+                this.isCheckout = !this.isCheckout
+            },
+            toggleSignIn() {
+                this.isHidden = !this.isHidden
+            },
         }
      }
   </script>
   <style>
-  .QuantitySelector .qty{
-    display:none!important
-  }
+  @media  (max-width: 640px) {
+    .QuantitySelector{
+            flex-direction: column-reverse!important;
+        }
+    }
+    .QuantitySelector .qty{
+        display:none!important
+    }
   </style>
  
