@@ -9,14 +9,15 @@
     @apply max-w-screen-xl mx-auto w-full md:px-8 px-2 flex  ;
   }  
   main{
-    @apply grow w-full md:pt-8 pt-2;
+    @apply grow w-full md:pt-8 pt-2 relative z-30;
   }
+
 /* Titles */
   .title-1{
-    @apply text-lila-primary text-3xl drop-shadow-sm font-bold
+    @apply text-lila-primary text-4xl drop-shadow-sm font-bold
   }
   .title-2{
-    @apply text-lila-primary text-lg drop-shadow-sm font-bold
+    @apply text-lila-primary text-xl drop-shadow-sm font-bold
   }
   
 
@@ -25,35 +26,47 @@
     @apply flex 
   }
   .form-input{
-    @apply rounded-md border px-3 py-2 text-dark-grey border-grey outline-none relative
+    @apply rounded-md border px-3 sm:py-3 py-2 text-dark-grey border-grey outline-none relative
   }
 
 /* Buttons */
   .button {
-    @apply   font-bold  px-6 py-2  cursor-pointer hover:transition-all hover:brightness-90;
+    @apply   font-bold  px-6 sm:py-3 py-2  cursor-pointer hover:transition-all hover:brightness-90;
   }
   .button-primary{
     @apply bg-amarillo  rounded-xl text-dark-grey border border-grey;
   }
   .button-secondary{
-    @apply bg-lila-secondary rounded-xl text-dark-grey border border-lila-secondary  text-xs ;
+    @apply bg-lila-secondary rounded-xl text-dark-grey border border-lila-secondary   ;
   }
   .button-white{
-    @apply bg-white rounded-xl text-dark-grey border border-grey  text-xs ;
+    @apply bg-white rounded-xl text-dark-grey border border-grey ;
   }
   .button-red{
-    @apply bg-white rounded-xl text-red border border-red  text-xs ;
+    @apply bg-white rounded-xl text-red border border-red   ;
   }
-
+/* Modal */
+  .modal-overlay {
+    @apply fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50
+  }
+  .modal-overlay .modal {
+    @apply bg-white p-5 rounded-lg  w-5/6 max-w-[400px] relative shadow-lg
+  }
+  .modal-overlay  .close-btn {
+    @apply absolute top-[10px] right-[10px] bg-transparent text-lg cursor-pointer
+  }
+  .modal-overlay   .input-field {
+    @apply  w-full p-2 border border-grey mb-2 rounded
+  }
 /* Header */
   header{
-    @apply w-full
+    @apply w-full top-0 z-40 sticky
   }
   header .logo{
-    @apply flex justify-start items-end relative sm:flex-nowrap flex-wrap
+    @apply flex justify-start items-end relative sm:flex-row flex-col
   }
   header .logo img{
-    @apply w-[120px];
+    @apply sm:w-[120px] w-[90px];
   }
   .header-gradient{
   @apply  bg-custom-gradient w-full  text-white shadow-md
@@ -70,14 +83,15 @@
   .item-num{
     @apply  text-dark-grey ml-2 bg-amarillo py-[1px] px-[5px] rounded-xl
   }
-  header .dropdown-button{
-    @apply p-4 bg-amarillo text-sm hover:brightness-90 hover:text-white hover:transition-all
+  .dropdown-button{
+    @apply px-4 sm:py-3 py-2 bg-white border border-amarillo text-base hover:brightness-90  hover:transition-all rounded-xl font-bold
   }
-  header .dropdown-menu{
-    @apply absolute  border border-grey shadow-sm  w-full z-50 bg-light-grey text-sm text-dark-grey
+  .dropdown-menu{
+    @apply absolute bg-white  rounded-b-xl  shadow-sm  w-full text-base text-dark-grey sm:top-[41px] top-[33px] border border-t-0 border-amarillo
   }
-  header .dropdown-item{
-    @apply block p-5 hover:bg-white
+
+  .dropdown-menu li{
+    @apply cursor-pointer text-center py-2 w-full bg-white hover:brightness-90  hover:transition-all last:rounded-b-xl
   }
   header .links{
     @apply flex flex-nowrap text-dark-grey text-sm h-full pb-2 
@@ -88,7 +102,7 @@
 /* Shop */
 
   .shop-container {
-    @apply  grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-6 justify-center md:justify-between
+    @apply  grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-6 justify-center md:justify-between mt-[170px] sm:mt-0
   }
   .card{
     @apply  border rounded-xl  border-grey grid grid-cols-1 gap-2 w-full max-w-[300px] mx-auto
@@ -110,6 +124,9 @@
   }
   .shop-container .button{
     @apply py-3 
+  }
+  .catalog-headings{
+    @apply flex sm:justify-between justify-center mt-2 pt-6 sm:pt-0 sm:mt-8 mb-2  gap-y-4 sm:relative fixed top-[80px] left-0 bg-white sm:top-auto  z-40 flex-col sm:flex-row items-center w-full sm:mb-10
   }
 
 /* cart */
@@ -136,7 +153,10 @@
     @apply text-xs shadow mt-4 pb-6
   }
   .product-list .buttons{
-    @apply grid sm:grid-cols-3 grid-cols-1 justify-between content-center gap-3 mt-4
+    @apply grid sm:grid-cols-3 grid-cols-1 sm:justify-between justify-center justify-items-center content-center gap-3 mt-4 sm:justify-items-stretch
+  }
+  .product-list .buttons button{
+    @apply sm:w-auto w-[70%] 
   }
   .cart-total{
     @apply border border-grey 
@@ -170,21 +190,24 @@
   .product-data .description{
     @apply text-sm mb-4
   }
-  .qty{
-    @apply flex items-center gap-3 mb-6
+  .QuantitySelector{
+    @apply flex items-center gap-3 
   }
-  .product-data .txt{
+  .product-data .txt, .QuantitySelector .txt{
     @apply font-bold text-sm
   }
-  .qty button{
-    @apply border rounded-none px-2 leading-5 border-gray-300 hover:bg-light-grey
+  .QuantitySelector button{
+    @apply border rounded-sm px-2 leading-6 border-gray-300 hover:bg-light-grey
+  }
+  .QuantitySelector .qtyn{
+    @apply font-bold text-rosa
   }
   /* Footer */
   footer{
-    @apply w-full bg-lila-secondary py-16 mt-20
+    @apply w-full bg-lila-secondary py-8 mt-20
   }
   .f-logo{
-    @apply w-[220px];
+    @apply w-[120px];
   }
 
 

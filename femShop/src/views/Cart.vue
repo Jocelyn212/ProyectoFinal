@@ -1,11 +1,6 @@
 <template>
 <main  class="w-full">
-    <div class="container">
-        <!--  <div class="cart">
-            <div v-for="(item) in cartStore.items">
-            {{ item.title }}
-            <button class="btn btn-danger" @click="cartStore.deleteItem(index)">X</button>
-        </div> -->
+    <div class="container mt-5">
         <div class="cart-container max-w-screen-lg mx-auto">
             <div class="product-list">
                 <div class="titles cart-cols">
@@ -16,14 +11,15 @@
                     <div class="text-center">Delete</div>
                 </div>
                 <div v-for="item in cartStore.items" class="items cart-cols ">
-                    <div class="item flex text-xs col-span-3 items-center">
+                    <div class="item flex text-xs col-span-3 items-center cursor-pointer"
+                        @click="showProductDetails(item.id)">
                         <img v-if="item.images" :src="item.images[0]" :alt="item.title" class="card-img" />
                         <h2 class="text-lila-primary font-bold">    {{item.title}}
                         </h2>
                     </div>
                     <p class="price">{{item.price}} €</p>
                     <div class="price cantidad">
-                        <span>{{ item.cantidad }}</span>
+                        <span><QuantitySelector v-model="item.cantidad" /></span>
                     </div>
                     <div class="price subtotal"><span> {{  item.price * item.cantidad }}</span> €</div>
                     <button class="btn btn-danger" @click="cartStore.deleteItem(index)"><span class="fa-regular fa-circle-xmark text-lg text-red"></span>
@@ -31,13 +27,15 @@
                 </div>
 
                 <div class="buttons">
-                    <button class="button button-primary text-xs">
-                        Continue shopping
+                    <button  class="button button-primary  text-center text-sm">
+                        <RouterLink to="/" >
+                            Continue shopping
+                        </RouterLink>
                     </button>
-                    <!-- <button class="button button-white">
-                        Update cart shopping
-                    </button> -->
-                    <button class="button button-red" @click="cartStore.clearCart">
+                    <button class="button button-white text-sm">
+                        Update cart
+                    </button>
+                    <button class="button button-red text-sm" @click="cartStore.clearCart">
                         Clear cart
                     </button>
                     
@@ -74,15 +72,27 @@
     </main>
 </template>
 <script>
+    import QuantitySelector from "../components/QuantitySelector.vue";
     import { useCartStore} from "../stores/cart"
     import {mapStores} from "pinia"
+    
     export default {
         name: "Cart",
+        components: { QuantitySelector },
+
         computed:{
             ...mapStores(useCartStore)
+        },
+        methods: {
+            showProductDetails(productId) {
+                this.$router.push(`/product/${productId}`);
+            },
         }
      }
   </script>
   <style>
+  .QuantitySelector .qty{
+    display:none!important
+  }
   </style>
  
