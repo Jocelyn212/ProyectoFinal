@@ -104,10 +104,19 @@
                     <div>
                         <input v-model="this.usuario" type="text" id="usuario" placeholder="Username"  class="input-field"><label for="usuario" class="hidden">Usuario</label>
                     </div>
+                    <div class="modal-error">
+                        <span v-if="this.errors.usuario">{{ this.errors.usuario }}</span>
+                    </div>
                     <div>
                         <input v-model="this.password" type="password" id="password" placeholder="Password" class="input-field"><label for="password" class="hidden">Password</label>
                     </div>
-                    <button @click="login" class="button button-primary">Login</button>
+                    <div class="modal-error">
+                        <span v-if="this.errors.password">{{ this.errors.password }}</span>
+                    </div>
+                    <div class="modal-error">
+                        <span v-if="this.errors.login">{{ this.errors.login }}</span>
+                    </div>
+                    <button @click="checkForm" class="button button-primary">Login</button>
                 </div>
             </div>
         </div>
@@ -124,31 +133,51 @@ export default {
         return {
         isHidden: false,
         mobileMenu: false,
-        usuario: "",
-        password: ""
+        usuario: null,
+        password: null,
+        errors: {},
         };
     },
     methods: {
         toggleSignIn() {
           this.isHidden = !this.isHidden
+          this.errors = {}
         },
         toggleMobileMenu() {
           this.mobileMenu = !this.mobileMenu
         },
+        checkForm() {
+            this.errors = {};
+            if (!this.usuario) {
+                this.errors.usuario = "User is mandatory";
+                console.log("falta el nombre")
+            }
+            if (!this.password) {
+                this.errors.password = "Password is mandatory";
+                console.log("falta el password")
+            }
+            if (Object.keys(this.errors).length === 0) {
+                this.login()
+            }
+
+        },
         async login() {
             try {
-                console.log(this.usuario)
                 const user = {
 	                "email": this.usuario,
 	                "password": this.password
                 }
                 const response = await axios.post("https://api.escuelajs.co/api/v1/auth/login",user);
                 const token = response.data.access_token;
-                console.log(token)
                 this.activeUserStore.getUserData(token);
                 this.toggleSignIn()
             } catch(error) {
-                console.log(error)
+                console.log("error", error)
+                if (error.status === 401) {
+                    this.errors.login = "Incorrect user or password"
+                } else {
+                    this.errors.login = error.message
+                }
             }
         },
         logOut() {
