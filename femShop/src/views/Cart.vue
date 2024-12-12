@@ -4,29 +4,29 @@
         <div class="cart-container max-w-screen-lg mx-auto">
             <div class="product-list">
                 <div class="titles cart-cols">
-                    <div class="md:col-span-3 col-span-2 ">Product</div>
-                    <div class="">Price</div>
-                    <div class="md:col-span-3 col-span-2 sm:text-left text-center">Quantity</div>
-                    <div class="col-span-2 ">Subtotal</div>
-                    <div class="">Delete</div>
+                    <div class="colProd">Product</div>
+                    <div class="colPrice">Price</div>
+                    <div class="colQty">Quantity</div>
+                    <div class="colSub">Subtotal</div>
+                    <div class="colDel">Delete</div>
                 </div>
-                <div v-for="item in cartStore.items" class="items cart-cols ">
-                    <div class="item flex text-xs md:col-span-3 col-span-2 items-center cursor-pointer md:flex-row flex-col"
+                <div v-for="item in cartStore.items" class="items cart-cols">
+                    <div class="colProd item flex text-xs  items-center cursor-pointer md:flex-row flex-col"
                         @click="showProductDetails(item.id)">
                         <img v-if="item.images" :src="item.images[0]" :alt="item.title" class="card-img " />
                         <h2 class="text-lila-primary font-bold md:mt-0 mt-1 md:text-left text-center">    {{item.title}}
                         </h2>
                     </div>
-                    <p class="price ">{{item.price}} €</p>
-                    <div class="cantidad md:col-span-3 col-span-2">
+                    <p class="price colPrice">{{item.price}} €</p>
+                    <div class="cantidad colQty">
                         <span><QuantitySelector v-model="item.cantidad" /></span>
                     </div>
-                    <div class="price subtotal col-span-2"><span> {{  item.price * item.cantidad }}</span> €</div>
-                    <button class="btn btn-danger !text-left" @click="cartStore.deleteItem(index)"><span class="fa-regular fa-circle-xmark text-lg text-red"></span>
+                    <div class="price subtotal colSub"><span> {{  item.price * item.cantidad }}</span> €</div>
+                    <button class="btn btn-danger !text-left colDel" @click="cartStore.deleteItem(index)"><span class="fa-regular fa-circle-xmark text-lg text-red"></span>
                     </button>
                 </div>
 
-                <div class="buttons">
+                <div class="buttons" v-if="!isCartEmpty">
                     <button  class="button button-primary  text-center text-sm">
                         <RouterLink to="/" >
                             Continue shopping
@@ -38,7 +38,14 @@
                     <button class="button button-red text-sm" @click="cartStore.clearCart">
                         Clear cart
                     </button>
-                    
+                </div>
+                <div v-else class="block text-center mt-10 flex-col">
+                    <p class="text-3xl font-bold text-lila-primary text-center mb-10">Your cart is empty!</p>
+                    <button  class="button button-secondary  text-center text-xl">
+                        <RouterLink to="/" >
+                            Continue shopping
+                        </RouterLink>
+                    </button>
                 </div>
             </div>
             <div class="cart-total">
@@ -58,18 +65,35 @@
                         <span>Total amount</span>
                         <span>{{ cartStore.cartTotal}} €</span>
                     </div>
-                    <button class="button button-primary text-xs" v-if="isAuthenticated" @click="toggleCheckout()">Proceed to checkout</button>
-                    <button v-else class="button button-white text-xs" @click="toggleSignIn">Login to checkout</button>
+
+            <!-- Checkout button -->
+                    <button v-if="isAuthenticated"  class="button button-checkout text-sm" @click="toggleCheckout()" :disabled="isCartEmpty" >Proceed to checkout</button>
+    
+                    <button v-else class="button button-white text-sm" @click="toggleSignIn">Login to checkout</button>
             <!-- MODAL Checkout -->
                     <div v-if="isCheckout" class="modal-overlay" @click.self="toggleCheckout()">
                         <div class="modal">
                             <button class="close-btn" @click="toggleCheckout()"><i class="fa-solid fa-xmark"></i></button>
-                            <h2 class="text-lg font-bold mb-4">Checkout</h2>
-                            <div>
-                                    <span>Total amount</span>
-                                    <span>{{ cartStore.cartTotal}} €</span>
-                                <button class="button button-primary">Confirm</button>
+                            <div class="confirm" v-if="!confirmed">
+                                <h2 class="text-xl font-bold mb-4 text-green text-center">Payment details</h2>
+                                <div>
+                                    <p class="text-lg mb-5 text-center">Total amount: <span class="font-bold">{{ cartStore.cartTotal}} €</span></p>
+                                  
+                                <button class="button button-checkout w-full" @click="togglConfirmed()">Confirm payment</button>
+                                </div>
                             </div>
+                            <div v-else>
+                                <p class="text-xl font-bold text-red text-center mb-5">Payment Successful!</p>
+
+                                <p class="text-center" >Thank you for your payment.</p>
+                                <p class="text-center mb-5" >You’ll receive a confirmation email with your order details shortly.</p>
+
+                                
+                                <button class="button button-red text-sm w-full" @click="toggleCheckout()">
+                                    Close
+                                </button>
+                            </div>
+                            
                         </div>
                     </div>
             <!-- MODAL Log In -->
@@ -93,6 +117,7 @@
             return {
                 isHidden: false,
                 isCheckout: false,
+                confirmed: false,
             };
         },
         components: { QuantitySelector, LoginModal },
@@ -101,6 +126,9 @@
             ...mapStores(useCartStore, useActiveUserStore),
             isAuthenticated() {
                 return !!this.activeUserStore.profile?.avatar;
+            },
+            isCartEmpty() {
+                return this.cartStore.items.length === 0; 
             },
         },
         methods: {
@@ -112,10 +140,15 @@
                 cartStore.updateAllCart()
             },
             toggleCheckout() {
-                this.isCheckout = !this.isCheckout
+                this.isCheckout = !this.isCheckout;
+                this.confirmed = false;
             },
             toggleSignIn() {
                 this.isHidden = !this.isHidden
+            },
+            togglConfirmed() {
+                this.confirmed = !this.confirmed;
+                this.cartStore.clearCart();
             },
         }
      }

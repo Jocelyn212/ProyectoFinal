@@ -33,17 +33,23 @@
   .button {
     @apply   font-bold  px-6 sm:py-3 py-2  cursor-pointer hover:transition-all hover:brightness-90;
   }
+  .button:disabled {
+    @apply  opacity-50 cursor-not-allowed
+  }
   .button-primary{
     @apply bg-amarillo  rounded-xl text-dark-grey border border-grey;
   }
   .button-secondary{
-    @apply bg-lila-secondary rounded-xl text-dark-grey border border-lila-secondary   ;
+    @apply bg-lila-secondary rounded-xl text-white border border-lila-secondary   ;
   }
   .button-white{
     @apply bg-white rounded-xl text-dark-grey border border-grey ;
   }
   .button-red{
     @apply bg-white rounded-xl text-red border border-red   ;
+  }
+  .button-checkout{
+    @apply bg-green rounded-xl text-white border border-grey   ;
   }
 /* Modal */
   .modal-overlay {
@@ -141,6 +147,21 @@
   }
   .cart-container .cart-cols{
     @apply grid md:grid-cols-10 grid-cols-8 justify-start items-center py-2 px-4 gap-x-4
+  }
+  .cart-container .colProd {
+    @apply md:col-span-3 col-span-2
+  }
+  .cart-container .colPrice {
+    @apply text-left
+  }
+  .cart-container .colQty {
+    @apply md:col-span-3 col-span-2 sm:text-left text-center
+  }
+  .cart-container .colSub {
+    @apply col-span-2
+  }
+  .cart-container .colDel {
+    @apply text-left
   }
   .cart-container .titles{
     @apply  bg-cyan text-xs font-bold
