@@ -10,11 +10,23 @@
             <input v-model="usuario" type="text" id="usuario" placeholder="Username" class="input-field" />
             <label for="usuario" class="hidden">Usuario</label>
           </div>
+
+
+            <div class="modal-error">
+            <span v-if="this.errors.usuario">{{ this.errors.usuario }}</span>
+            </div>
+
           <div>
             <input v-model="password" type="password" id="password" placeholder="Password" class="input-field" />
             <label for="password" class="hidden">Password</label>
           </div>
-          <button @click="login" class="button button-primary">Login</button>
+          <div class="modal-error">
+            <span v-if="this.errors.password">{{ this.errors.password }}</span>
+        </div>
+        <div class="modal-error">
+            <span v-if="this.errors.login">{{ this.errors.login }}</span>
+        </div>
+        <button @click="checkForm" class="button button-primary">Login</button>
         </div>
       </div>
     </div>
@@ -36,11 +48,13 @@
     emits: ["close"],
     data() {
       return {
-        usuario: "",
-        password: "",
+        usuario: null,
+        password: null,
+        errors: {},
       };
     },
     methods: {
+        
       async login() {
         try {
           const user = {
@@ -50,14 +64,35 @@
           const response = await axios.post("https://api.escuelajs.co/api/v1/auth/login", user);
           const token = response.data.access_token;
           this.activeUserStore.getUserData(token);
-          this.$emit("close"); 
+          
+          this.toggleSignIn()
         } catch (error) {
-          console.error(error);
+            console.log("error", error)
+            if (error.status === 401) {
+                this.errors.login = "Incorrect user or password"
+            } else {
+                this.errors.login = error.message
+            }
         }
       },
       toggleSignIn() {
         this.$emit("close");
+        this.errors = {}
       },
+      checkForm() {
+            this.errors = {};
+            if (!this.usuario) {
+                this.errors.usuario = "User is mandatory";
+                console.log("falta el nombre")
+            }
+            if (!this.password) {
+                this.errors.password = "Password is mandatory";
+                console.log("falta el password")
+            }
+            if (Object.keys(this.errors).length === 0) {
+                this.login();
+            }
+        },
     },
     computed: {
       ...mapStores(useActiveUserStore),

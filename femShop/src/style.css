@@ -58,6 +58,9 @@
   .modal-overlay   .input-field {
     @apply  w-full p-2 border border-grey mb-2 rounded
   }
+  .modal-error {
+    @apply text-red mb-1;
+  }
 /* Header */
   header{
     @apply w-full top-0 z-40 sticky
@@ -144,7 +147,6 @@
   }
   .product-list .card-img{
     @apply w-[50px] h-[50px] mr-4 rounded-lg border border-grey
-    
   }
   .product-list .price{
     @apply font-bold 

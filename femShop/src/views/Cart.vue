@@ -73,8 +73,7 @@
                         </div>
                     </div>
             <!-- MODAL Log In -->
-                <LoginModal v-if="isHidden" :isHidden="isHidden" @close="toggleSignIn" />
-       
+                    <LoginModal v-if="isHidden" :isHidden="isHidden" @close="toggleSignIn" />
                 </div>
             </div>
         </div>

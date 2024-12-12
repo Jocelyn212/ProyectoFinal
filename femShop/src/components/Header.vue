@@ -72,6 +72,7 @@
         </div>
 
     <!-- MODAL Log In -->
+
         <LoginModal v-if="isHidden" :isHidden="isHidden" @close="toggleSignIn" />
         </header>
 </template>
