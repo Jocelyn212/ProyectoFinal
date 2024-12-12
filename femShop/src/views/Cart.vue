@@ -52,11 +52,11 @@
                     </div>
                     <div class="coupon border-b border-grey p-2 flex justify-center">
                         <label for="pr-coupon" class="hidden">coupon</label>
-                        <input id="pr-coupon"  type="text" placeholder="Enter coupon code" class="form-input text-sm">
+                        <input id="pr-coupon"  type="text" placeholder="Enter coupon code" class="form-input text-sm" @input="checkCode" v-model="inputCode">
                     </div>
                     <div class="amount">
                         <span>Total amount</span>
-                        <span>{{ cartStore.cartTotal}} €</span>
+                        <span>{{ totalWithDiscount}} €</span>
                     </div>
                     <button class="button button-primary text-xs">Proceed to checkout</button>
 
@@ -78,10 +78,20 @@
     
     export default {
         name: "Cart",
+        data() {
+            return {
+                activeDiscount: 1,
+                inputCode: null
+            }
+        },
         components: { QuantitySelector },
 
         computed:{
-            ...mapStores(useCartStore)
+            ...mapStores(useCartStore),
+            totalWithDiscount() {
+                const cartStore = useCartStore();
+                return Math.round(cartStore.cartTotal * this.activeDiscount)
+            }
         },
         methods: {
             showProductDetails(productId) {
@@ -91,6 +101,18 @@
                 const cartStore = useCartStore()
                 cartStore.updateAllCart()
 
+            },
+            checkCode() {
+                const codes = {
+                    "20LESS": 0.8,
+                    "ALLFREE": 0,
+                    "BLACKFRIDAY": 0.5,
+                }
+                if(Object.keys(codes).includes(this.inputCode)) {
+                    this.activeDiscount = codes[this.inputCode]
+                } else {
+                    this.activeDiscount = 1
+                }
             }
         }
      }
