@@ -15,8 +15,8 @@ export const useFavoritesStore = defineStore("favorites", {
 
     toggleFavorite(product) {
       const userID = this.getUserID();
-      const index = this.items.findIndex(item => item.id === product.id);
-      
+      const index = this.items.findIndex((item) => item.id === product.id);
+
       if (index >= 0) {
         this.items.splice(index, 1);
       } else {
@@ -66,17 +66,23 @@ export const useFavoritesStore = defineStore("favorites", {
       this.items = [];
       localStorage.removeItem("favorites");
       const userID = this.getUserID();
+    },
+
+    deleteFavorites() {
+      this.items = [];
+      localStorage.removeItem("favorites");
+      const userID = this.getUserID();
       if (userID) {
         this.updateFavoritesInFirebase(userID);
       }
-    }
+    },
   },
   getters: {
     isFavorite: (state) => (productId) => {
-      return state.items.some(item => item.id === productId);
+      return state.items.some((item) => item.id === productId);
     },
     favoritesCount: (state) => {
       return state.items.length;
-    }
-  }
+    },
+  },
 });
