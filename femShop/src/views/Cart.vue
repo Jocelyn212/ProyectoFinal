@@ -77,7 +77,7 @@
                             <div class="confirm" v-if="!confirmed">
                                 <h2 class="text-xl font-bold mb-4 text-green text-center">Payment details</h2>
                                 <div>
-                                    <p class="text-lg mb-5 text-center">Total amount: <span class="font-bold">{{ cartStore.cartTotal}} €</span></p>
+                                    <p class="text-lg mb-5 text-center">Total amount: <span class="font-bold">{{ totalWithDiscount }} €</span></p>
                                   
                                 <button class="button button-checkout w-full" @click="togglConfirmed()">Confirm payment</button>
                                 </div>
@@ -116,7 +116,7 @@
         data() {
             return {
                 activeDiscount: 1,
-                inputCode: null
+                inputCode: null,
                 isHidden: false,
                 isCheckout: false,
                 confirmed: false,
