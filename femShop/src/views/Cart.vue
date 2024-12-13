@@ -84,9 +84,16 @@
                             </div>
                             <div v-else>
                                 <p class="text-xl font-bold text-red text-center mb-5">Payment Successful!</p>
-
-                                <p class="text-center" >Thank you for your payment.</p>
-                                <p class="text-center mb-5" >You’ll receive a confirmation email with your order details shortly.</p>
+                                <p class="text-center mb-3" >
+                                    Thank you for your payment!</p>
+                                <p class="text-center  mb-3" >
+                                    We have successfully received your order with a total payment of <span class="font-bold">{{ totalAmount }} €.</span></p>
+                                <p class="text-center  mb-3" >
+                                    A confirmation email has been sent to <span class="font-bold">{{ userEmail }}</span> with the details of your purchase. Please check your inbox, and feel free to reach out if you have any questions.
+                                </p>
+                                <p class="text-center mb-5 font-bold" >
+                                    Thank you for shopping with us!
+                                </p>
 
                                 
                                 <button class="button button-red text-sm w-full" @click="toggleCheckout()">
@@ -120,6 +127,9 @@
                 isHidden: false,
                 isCheckout: false,
                 confirmed: false,
+                totalAmount: null,
+                userEmail: null,
+
             }
         },
         components: { QuantitySelector, LoginModal },
@@ -160,13 +170,17 @@
             toggleCheckout() {
                 this.isCheckout = !this.isCheckout;
                 this.confirmed = false;
+                
             },
             toggleSignIn() {
                 this.isHidden = !this.isHidden
             },
             togglConfirmed() {
+                this.totalAmount = this.totalWithDiscount;
+                this.userEmail = this.activeUserStore.profile?.email;
                 this.confirmed = !this.confirmed;
                 this.cartStore.clearCart();
+                console.log(totalAmount, userEmail);
             },
         }
      }
