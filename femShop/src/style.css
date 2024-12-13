@@ -29,37 +29,44 @@ main {
 }
 
 /* Buttons */
-.button {
-  @apply font-bold  px-6 sm:py-3 py-2  cursor-pointer hover:transition-all hover:brightness-90;
-}
-.button-primary {
-  @apply bg-amarillo  rounded-xl text-dark-grey border border-grey;
-}
-.button-secondary {
-  @apply bg-lila-secondary rounded-xl text-dark-grey border border-lila-secondary;
-}
-.button-white {
-  @apply bg-white rounded-xl text-dark-grey border border-grey;
-}
-.button-red {
-  @apply bg-white rounded-xl text-red border border-red;
-}
+  .button {
+    @apply   font-bold  px-6 sm:py-3 py-2  cursor-pointer hover:transition-all hover:brightness-90;
+  }
+  .button:disabled {
+    @apply  opacity-50 cursor-not-allowed
+  }
+  .button-primary{
+    @apply bg-amarillo  rounded-xl text-dark-grey border border-grey;
+  }
+  .button-secondary{
+    @apply bg-lila-secondary rounded-xl text-white border border-lila-secondary   ;
+  }
+  .button-white{
+    @apply bg-white rounded-xl text-dark-grey border border-grey ;
+  }
+  .button-red{
+    @apply bg-white rounded-xl text-red border border-red   ;
+  }
+  .button-checkout{
+    @apply bg-green rounded-xl text-white border border-grey   ;
+  }
 /* Modal */
-.modal-overlay {
-  @apply fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50;
-}
-.modal-overlay .modal {
-  @apply bg-white p-5 rounded-lg  w-5/6 max-w-[400px] relative shadow-lg;
-}
-.modal-overlay .close-btn {
-  @apply absolute top-[10px] right-[10px] bg-transparent text-lg cursor-pointer;
-}
-.modal-overlay .input-field {
-  @apply w-full p-2 border border-grey mb-2 rounded;
-}
-.modal-error {
-  @apply text-red mb-1;
-}
+  .modal-overlay {
+    @apply fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50
+  }
+  .modal-overlay .modal {
+    @apply bg-white p-5 rounded-lg  w-5/6 max-w-[400px] relative shadow-lg
+  }
+  .modal-overlay  .close-btn {
+    @apply absolute top-[10px] right-[10px] bg-transparent text-lg cursor-pointer
+  }
+  .modal-overlay   .input-field {
+    @apply  w-full p-2 border border-grey mb-2 rounded
+  }
+  .modal-error {
+    @apply text-red mb-1;
+  }
+
 /* Header */
 header {
   @apply w-full top-0 z-40 sticky;
@@ -132,42 +139,99 @@ header .links li {
 }
 
 /* cart */
-.cart-container {
-  @apply grid md:grid-cols-4 grid-cols-1  gap-6 justify-between w-full;
-}
-.product-list {
-  @apply md:col-span-3 flex flex-col justify-between;
-}
-.cart-container .cart-cols {
-  @apply grid grid-cols-7 justify-start items-center py-2 px-4 gap-x-4;
-}
-.cart-container .titles {
-  @apply bg-cyan text-xs font-bold;
-}
-.product-list .card-img {
-  @apply w-[50px] h-[50px] mr-4 rounded-lg border border-grey;
-}
-.product-list .price {
-  @apply font-bold text-center;
-}
-.product-list .items {
-  @apply text-xs shadow mt-4 pb-6;
-}
-.product-list .buttons {
-  @apply grid sm:grid-cols-3 grid-cols-1 sm:justify-between justify-center justify-items-center content-center gap-3 mt-4 sm:justify-items-stretch;
-}
-.product-list .buttons button {
-  @apply sm:w-auto w-[70%];
-}
-.cart-total {
-  @apply border border-grey;
-}
-.cart-total .cont {
-  @apply flex flex-col py-4 px-2;
-}
-.cart-total .amount {
-  @apply py-4 flex text-sm justify-between items-stretch content-stretch;
-}
+  .cart-container{
+    @apply grid md:grid-cols-6 grid-cols-1  gap-6 justify-between items-start w-full justify-items-center md:justify-items-stretch
+  }
+  .product-list{
+    @apply md:col-span-4 flex flex-col justify-between
+  }
+  .cart-container .cart-cols{
+    @apply grid md:grid-cols-10 grid-cols-8 justify-start items-center py-2 px-4 gap-x-4
+  }
+  .cart-container .colProd {
+    @apply md:col-span-3 col-span-2
+  }
+  .cart-container .colPrice {
+    @apply text-left
+  }
+  .cart-container .colQty {
+    @apply md:col-span-3 col-span-2 sm:text-left text-center
+  }
+  .cart-container .colSub {
+    @apply col-span-2
+  }
+  .cart-container .colDel {
+    @apply text-left
+  }
+  .cart-container .titles{
+    @apply  bg-cyan text-xs font-bold
+  }
+  .product-list .card-img{
+    @apply w-[50px] h-[50px] mr-4 rounded-lg border border-grey
+  }
+  .product-list .price{
+    @apply font-bold 
+  }
+  .product-list .items{
+    @apply text-xs shadow mt-4 pb-6
+  }
+  .product-list .buttons{
+    @apply grid sm:grid-cols-3 grid-cols-1 sm:justify-between justify-center justify-items-center content-center gap-3 mt-4 sm:justify-items-stretch
+  }
+  .product-list .buttons button{
+    @apply sm:w-auto w-[70%] 
+  }
+  .cart-total{
+    @apply border border-grey md:w-auto w-[320px] md:mt-0 mt-5 md:col-span-2
+  }
+  .cart-total .cont{
+    @apply flex flex-col py-4 px-2 gap-y-2
+  }
+  .cart-total .amount{
+    @apply  py-4 flex text-sm justify-between items-stretch content-stretch
+  }
+
+  /* Product */
+  .product-card{
+    @apply grid grid-cols-1 sm:grid-cols-3 gap-1 sm:gap-8 max-w-screen-md mx-auto justify-items-center mt-4
+  }
+  .product-card .product-images{
+    @apply max-w-[300px] 
+  }
+  .product-card img{
+    @apply rounded-xl border border-grey shadow-md h-auto
+  }
+  .product-data{
+    @apply sm:col-span-2 py-2 sm:px-0 px-4
+  }
+  .product-data .title{
+    @apply text-xl text-lila-primary font-bold mb-2
+  }
+  .product-data .price{
+    @apply text-xl text-neutral-600 font-bold mb-2
+  }
+  .product-data .description{
+    @apply text-sm mb-4
+  }
+  .QuantitySelector{
+    @apply flex items-center gap-3 
+  }
+  .product-data .txt, .QuantitySelector .txt{
+    @apply font-bold text-sm
+  }
+  .QuantitySelector button{
+    @apply border rounded-sm px-2 leading-6 border-gray-300 hover:bg-light-grey
+  }
+  .QuantitySelector .qtyn{
+    @apply font-bold text-rosa
+  }
+  /* Footer */
+  footer{
+    @apply w-full bg-lila-secondary py-8 mt-20
+  }
+  .f-logo{
+    @apply w-[120px];
+  }
 
 /* Product */
 .product-card {
