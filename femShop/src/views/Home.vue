@@ -1,11 +1,6 @@
 <template>
     <main>
-     <div class="container flex-col relative">
-        <!-- <div class="category-filter mb-8">
-             <button @click="filterByCategory(null)" class="button">All</button>
-             <button v-for="category in categories" :key="category.id" @click="filterByCategory(category)" class="button">{{ category.name }}</button>
-         </div> -->
-         
+     <div class="container flex-col relative">      
          <h2 v-if="products" class="title-1 text-center mt-4 relative z-20 sm:block hidden">{{ selectedCategory ? selectedCategory.name : 'All products' }}</h2>
 
          <div class="catalog-headings">
