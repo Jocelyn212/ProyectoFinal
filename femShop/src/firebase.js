@@ -28,7 +28,7 @@ const firebaseConfig2 = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 // Get a reference to the database service
-const db = getDatabase(app);
+export const db = getDatabase(app);
 
 //setter method
 export function updateCarts(userId, items) {
@@ -84,5 +84,28 @@ export async function getAllProducts() {
     }
   } catch (error) {
     console.error(error);
+  }
+}
+
+// Funciones para favoritos en firebase.js
+export async function updateFavorites(userId, items) {
+  try {
+    await set(ref(db, `favorites/${userId}`), items);
+  } catch (error) {
+    console.error("Error updating favorites:", error);
+    throw error;
+  }
+}
+
+export async function getFavorites(userId) {
+  try {
+    const snapshot = await get(child(ref(db), `favorites/${userId}`));
+    if (snapshot.exists()) {
+      return snapshot.val();
+    }
+    return [];
+  } catch (error) {
+    console.error("Error getting favorites:", error);
+    throw error;
   }
 }
