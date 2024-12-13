@@ -72,7 +72,6 @@
         </div>
 
     <!-- MODAL Log In -->
-
         <LoginModal v-if="isHidden" :isHidden="isHidden" @close="toggleSignIn" />
         </header>
 </template>
@@ -91,11 +90,13 @@ export default {
         return {
             isHidden: false,
             mobileMenu: false,
+
         };
     },
     methods: {
         toggleSignIn() {
           this.isHidden = !this.isHidden
+          this.errors = {}
         },
         toggleMobileMenu() {
           this.mobileMenu = !this.mobileMenu
