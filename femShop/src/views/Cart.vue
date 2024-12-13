@@ -28,7 +28,7 @@
 
                 <div class="buttons" v-if="!isCartEmpty">
                     <button  class="button button-primary  text-center text-sm">
-                        <RouterLink to="/" >
+                        <RouterLink to="/shop" >
                             Continue shopping
                         </RouterLink>
                     </button>
@@ -42,7 +42,7 @@
                 <div v-else class="block text-center mt-10 flex-col">
                     <p class="text-3xl font-bold text-lila-primary text-center mb-10">Your cart is empty!</p>
                     <button  class="button button-secondary  text-center text-xl">
-                        <RouterLink to="/" >
+                        <RouterLink to="/shop" >
                             Continue shopping
                         </RouterLink>
                     </button>
