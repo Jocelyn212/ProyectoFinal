@@ -4,7 +4,7 @@
             <div  class="bg">
                 <div class="shop-now container  h-screen flex flex-wrap relative items-center content-center text-white font-bold gap-8 drop-shadow-md !max-w-screen-md">      
                     <h2 class="w-full text-center sm:text-6xl text-5xl uppercase ">
-                        Our Black Friday saleis finally here!
+                        Our Black Friday sale is finally here!
                     </h2>
                     <p class="w-full text-center sm:text-5xl text-4xl">50% off sitewide</p>
                     <div  class="w-full text-center mt-8">
@@ -24,16 +24,6 @@
  
  export default {
      name: "Home",
-
-     data() {
-        
-     },
-     methods: {
-      
-     },
-     mounted() {
-      
-     }
  }
  </script>
  
@@ -42,13 +32,14 @@
         width:100%;
         height: 100vh;
         background:  url('../img/home3.webp') no-repeat center/cover;
+        position:relative;
         
     }
     .page-home header > div.container.flex{
         display:none
     }
     .page-home header .header-gradient{
-        background-color: #CA9BDD60!important;
+        background-color: #00000080!important;
         background-image: none!important;
         box-shadow: none!important;
     }
@@ -68,5 +59,9 @@
         outline:1.5px!important;
         text-decoration:none
     }
-
+    @media (min-width: 640px) {
+        .page-home header .logo img {
+            width: 160px;
+        }
+    }
  </style>
