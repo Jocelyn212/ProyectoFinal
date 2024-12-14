@@ -9,7 +9,7 @@
                     <p class="w-full text-center sm:text-5xl text-4xl">50% off sitewide</p>
                     <div  class="w-full text-center mt-8">
                         <RouterLink to="/shop">
-                            <buton class="button button-white text-3xl uppercase !text-white !border-lila-primary hover:bg-lila-secondary">Shop now</buton>
+                            <buton class="button button-white text-3xl uppercase !text-white !border-lila-primary hover:bg-lila-primary">Shop now</buton>
                         </RouterLink>
                     </div>
                     
@@ -39,7 +39,7 @@
         display:none
     }
     .page-home header .header-gradient{
-        background-color: #00000080!important;
+        background-color: #540D6E!important;
         background-image: none!important;
         box-shadow: none!important;
     }
@@ -50,7 +50,7 @@
         display:none!important
     }
     .page-home  .shop-now{
-        -webkit-text-stroke: 1.5px #540D6E;
+        -webkit-text-stroke: 3px #540D6E;
         text-shadow: 0 0 0 #232323;
         transition: all 250ms;
     }
