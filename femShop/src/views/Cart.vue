@@ -1,5 +1,6 @@
 <template>
 <main  class="w-full">
+    <Breadcrumb />
     <div class="container mt-5">
         <div class="cart-container max-w-screen-lg mx-auto">
             <div class="product-list">
@@ -113,6 +114,7 @@
 </template>
 <script>
     import QuantitySelector from "../components/QuantitySelector.vue";
+    import Breadcrumb from "../components/Breadcrumb.vue";
     import LoginModal from "../components/LoginModal.vue";
     import { useCartStore} from "../stores/cart"
     import { useActiveUserStore} from "../stores/user"
@@ -132,7 +134,7 @@
 
             }
         },
-        components: { QuantitySelector, LoginModal },
+        components: { QuantitySelector, LoginModal, Breadcrumb },
 
         computed:{
             ...mapStores(useCartStore, useActiveUserStore),

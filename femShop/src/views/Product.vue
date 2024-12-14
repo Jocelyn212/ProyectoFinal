@@ -1,6 +1,7 @@
 <template>
     <main>
-        <div class="container">
+        <Breadcrumb :productTitle="product.title" :categoryName="product.category.name" />
+        <div class="container"> 
             <div class="product-card" >
             <!-- Images -->
                 <div class="product-images">
@@ -69,13 +70,14 @@
  </template>
  <script>
     import QuantitySelector from "../components/QuantitySelector.vue";
+    import Breadcrumb from "../components/Breadcrumb.vue";
     import { useCartStore} from "../stores/cart"
     import {mapStores} from "pinia"
     import {getProduct} from "../firebase"
 
     export default {
         name: "Product",
-        components: { QuantitySelector },
+        components: { QuantitySelector, Breadcrumb },
     data() {
             return {
                 product: {
@@ -83,7 +85,8 @@
                     title: '',
                     price: 0,
                     description: '',
-                    images: []
+                    images: [],
+                    category: { name: '' },
                 },
                 quantity: 1,
                 isImgModalOpen: false, 

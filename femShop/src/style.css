@@ -8,6 +8,9 @@ body {
 .container {
   @apply max-w-screen-xl mx-auto w-full md:px-8 px-2 flex;
 }
+.breadcrumb{
+  @apply max-w-screen-xl mx-auto w-full md:px-10 px-2 sm:flex hidden md:mb-4 mb-0 md:mt-0 mt-2 md:ml-0 ml-2
+}
 main {
   @apply grow w-full md:pt-8 pt-2 relative z-30;
 }

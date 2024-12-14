@@ -28,39 +28,39 @@
  </script>
  
  <style>
-   .page-home .home{
+   .home .home{
         width:100%;
         height: 100vh;
         background:  url('../img/home3.webp') no-repeat center/cover;
         position:relative;
         
     }
-    .page-home header > div.container.flex{
+    .home header > div.container.flex{
         display:none
     }
-    .page-home header .header-gradient{
+    .home header .header-gradient{
         background-color: #540D6E!important;
         background-image: none!important;
         box-shadow: none!important;
     }
-    .page-home .bg{
+    .home .bg{
         background-color: #00000060;
     }
-    .page-home footer{
+    .home footer{
         display:none!important
     }
-    .page-home  .shop-now{
+    .home  .shop-now{
         -webkit-text-stroke: 3px #540D6E;
         text-shadow: 0 0 0 #232323;
         transition: all 250ms;
     }
-    .page-home .shop-now a{
+    .home .shop-now a{
         -webkit-text-stroke: 1.5px #540D6E;
         outline:1.5px!important;
         text-decoration:none
     }
     @media (min-width: 640px) {
-        .page-home header .logo img {
+        .home header .logo img {
             width: 160px;
         }
     }
