@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-        <figure class="relative"><img v-if="product.images" :src="product.images[0]" :alt="product.title">
+        <figure class="relative cursor-pointer" @click="showProductDetails"><img v-if="product.images" :src="product.images[0]" :alt="product.title">
         <span class="favorite fa-regular fa-heart"></span>
         <span class="favorite fa-solid fa-heart"></span>
         </figure>

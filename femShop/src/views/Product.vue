@@ -42,12 +42,15 @@
                     <div class="mb-6">
                         <QuantitySelector v-model="quantity" />
                     </div>
-                    <button class="button button-primary mr-4"  @click="addToCart"
+                    <button class="button button-primary mr-2 !bg-lila-primary !text-white text-sm "  @click="addToCart"
                     >
                         Add to cart
                     </button>
-                    <RouterLink to="/cart"  class="button button-white text-center ">
+                    <RouterLink to="/cart"  class="button button-secondary text-center text-sm mr-2">
                         Go to cart
+                    </RouterLink>
+                    <RouterLink to="/shop"  class="button button-white text-center text-sm text-nowrap inline-block mt-2">
+                        Continue shopping
                     </RouterLink>
                 </div>
             </div>
@@ -128,16 +131,6 @@
         mounted() {
             const productId = this.$route.params.id
             this.getProduct(productId)
-            
-           /*  fetch(`https://api.escuelajs.co/api/v1/products/${productId}`)
-                .then(response => response.json())
-                .then(data => {
-                    this.product = data
-                    console.log(this.product);
-                })
-                .catch(error => {
-                    console.error("Error fetching product details:", error)
-                }) */
         }
         
     }

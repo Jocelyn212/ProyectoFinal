@@ -23,6 +23,7 @@
                     <input v-model="searchQuery" id="pr-search" type="text" placeholder="Search ..." class="form-input sm:w-[220px] !border-amarillo" />
                     <button class="button button-primary -ml-[12px] relative !border-amarillo">Search</button>
                 </form>
+            <!-- Page title -->  
                 <h2 v-if="products" class="title-2 text-center pb-2 relative  sm:hidden block">{{ selectedCategory ? selectedCategory.name : 'All products' }}</h2>
             </div>
             <!-- Shop -->
@@ -61,7 +62,6 @@
                  this.products = response;
                  this.filteredProducts = this.products; 
                  this.extractCategories(); // Extraer categorías de los productos
-                 this.checkCategoryParam(); // Comprobamos si hay un parámetro de categoría en la URL
              } catch(error) {
                  console.log(error)
              }

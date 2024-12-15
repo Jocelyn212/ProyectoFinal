@@ -45,7 +45,7 @@
                     category: [
                         { label: "Home", path: "/" },
                         { label: "Shop", path: "/shop" },
-                         { label: this.categoryName || "Category", path: null },
+                        { label: this.categoryName || "Category", path: null },
                     ],
                     product: [
                         { label: "Home", path: "/" },
