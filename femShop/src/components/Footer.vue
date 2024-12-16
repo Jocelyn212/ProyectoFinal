@@ -1,14 +1,14 @@
 <template>
     <footer>
         <div class="container sm:flex-row flex-col">
-            <div class="logo mr-3 mb-5 sm:mb-0"> <img src="../img/logo-lila.png" alt="FemShop - Online Shop" class="f-logo"></div>
+            <div class="logo mr-3 mb-5 sm:mb-0"> <router-link to="/"><img src="../img/logo-lila.png" alt="FemShop - Online Shop" class="f-logo"></router-link></div>
             <div class="links grid sm:grid-cols-4 items-start justify-start w-full">
                 <div class="p-4 pt-0">
                     <h3 class="mb-1 font-semibold">Find product</h3>
                     <ul>
-                         <li class="hover:opacity-70"><router-link :to="{ name: 'search', query: { keywords: 'table', category: '3' } }">Tables</router-link></li> 
-                         <li class="hover:opacity-70"><router-link :to="{ name: 'search', query: { keywords: 'cap', category: '1' } }">Caps</router-link></li> 
-                         <li class="hover:opacity-70"><router-link :to="{ name: 'search', query: { keywords: 'headphones', category: '2' } }">Headphones</router-link></li> 
+                         <li class="hover:opacity-70"><router-link :to="{ name: 'shop', query: { keywords: 'table', category: '3' } }">Tables</router-link></li> 
+                         <li class="hover:opacity-70"><router-link :to="{ name: 'shop', query: { keywords: 'cap', category: '1' } }">Caps</router-link></li> 
+                         <li class="hover:opacity-70"><router-link :to="{ name: 'shop', query: { keywords: 'headphones', category: '2' } }">Headphones</router-link></li> 
                     </ul>
                 </div>
                 <div class="p-4 pt-0">
