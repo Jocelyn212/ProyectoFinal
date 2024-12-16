@@ -6,7 +6,7 @@
          <h2 v-if="products" class="title-1 text-center mt-4 relative z-20 sm:block hidden">{{ selectedCategory ? selectedCategory.name : 'All products' }}</h2>
          <div class="catalog-headings bg-black">
         <!-- Dropdown categorias -->
-            <div class="relative inline-block w-[70%] sm:w-auto z-2">
+            <div class="relative inline-block w-[70%] sm:w-auto z-20">
                 <button class="dropdown-button w-full " @click="toggleMenu">Browse categories 
                     <span v-if="CatisOpen" class="fa-solid fa-chevron-up ml-2 text-dark-grey"></span>
                     <span  v-else class="fa-solid fa-chevron-down ml-2 text-dark-grey"></span>
@@ -29,8 +29,8 @@
         <!-- You searched for -->
         <div v-if="this.activeSearch" class="border rounded-md p-5 text-center text-base min-w-[200px] self-center mb-5  border-gray-300 relative">
           <span class="border border-gray-300 rounded-md px-1  hover:bg-gray-100 bg-gray-200 fa-solid fa-xmark cursor-pointer absolute top-2 right-2"  @click="searchProducts"></span>
-          <p class="mt-2">You searched for:</p>
-          <p class="font-bold">'{{ this.activeSearch}}'</p>
+          <p class="mt-2">You searched for: <span class="font-bold">'{{ this.activeSearch}}'</span></p>
+          
           
         </div>
         <div v-if="this.filteredProducts.length === 0"><p class="text-2xl font-bold text-lila-primary text-center mb-10">Sorry, no products were found for your search.</p></div>

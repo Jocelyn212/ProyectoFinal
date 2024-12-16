@@ -116,14 +116,14 @@
         class="modal-overlay"
         @click.self="closeImgModal"
       >
-        <div class="modal-content">
-          <button class="close-btn" @click="closeImgModal">
-            <i class="fa-solid fa-xmark"></i>
+        <div class="modal-content modal-images relative">
+          <button class="close-btn text-white hover:text-lila-secondary" @click="closeImgModal">
+            <span class="fa-solid fa-xmark text-3xl "></span>
           </button>
           <div class="slider">
             <button class="prev" @click="prevImage">
               <span
-                class="fa-solid fa-chevron-left text-lila-secondary hover:text-white hover:transition-all"
+                class="fa-solid fa-chevron-left text-white hover:text-lila-secondary hover:transition-all"
               ></span>
             </button>
             <img
@@ -133,15 +133,15 @@
             />
             <button class="next" @click="nextImage">
               <span
-                class="fa-solid fa-chevron-right text-lila-secondary hover:text-white hover:transition-all"
+                class="fa-solid fa-chevron-right text-white hover:text-lila-secondary hover:transition-all"
               ></span>
             </button>
           </div>
-          <p
-            class="image-caption text-center mt-2 text-lila-primary font-bold text-lg"
+          <div
+            class="image-caption text-center mt-2 text-lila-primary font-bold text-sm "
           >
             {{ activeImage + 1 }} / {{ product.images.length }}
-          </p>
+          </div>
         </div>
       </div>
 </template>
@@ -276,34 +276,44 @@ export default {
 };
 </script>
 <style>
-.slider {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-}
-.slider-image {
-  max-width: 100%;
-  max-height: 400px;
-  border-radius: 10px;
-  border: 5px solid #ca9bdd;
-}
-.prev,
-.next {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 3rem;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-}
-.prev {
-  left: 10px;
-}
-.next {
-  right: 10px;
-}
+    .slider {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+    }
+    .modal-images .close-btn{
+        z-index:100!important;
+        right:20px
+    }
+    .slider-image {
+        max-width: 100%;
+        max-height: 400px;
+        border-radius: 10px;
+        border: 5px solid #ca9bdd;
+    }
+    .image-caption{
+        position: relative;
+        z-index: 100;
+        top: -30px;
+        background-color: #ca9bdd80;
+    }
+    .prev,
+    .next {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 3rem;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+    }
+    .prev {
+        left: 10px;
+    }
+    .next {
+        right: 10px;
+    }
 </style>

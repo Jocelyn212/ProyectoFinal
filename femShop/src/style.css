@@ -113,7 +113,7 @@ header .links li {
 /* Shop */
 
 .shop-container {
-  @apply grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-10 justify-center md:justify-between mt-[170px] sm:mt-0;
+  @apply grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-10 justify-center md:justify-between mt-[180px] sm:mt-0;
 }
 .card {
   @apply border rounded-xl  border-grey grid grid-cols-1 gap-2 w-full max-w-[300px] mx-auto;
@@ -137,7 +137,7 @@ header .links li {
   @apply py-3;
 }
 .catalog-headings {
-  @apply flex sm:justify-between justify-center mt-2 pt-6 sm:pt-0 sm:mt-8 mb-2  gap-y-4 sm:relative fixed top-[80px] left-0 bg-white sm:top-auto  z-40 flex-col sm:flex-row items-center w-full sm:mb-10;
+  @apply flex sm:justify-between justify-center mt-2 pt-6 sm:pt-0 sm:mt-8 mb-2  gap-y-4 sm:relative fixed top-[120px] left-0 bg-white sm:top-auto  z-40 flex-col sm:flex-row items-center w-full sm:mb-10;
 }
 
 /* cart */
