@@ -1,8 +1,8 @@
 <template>
 <div class="banner">
     <div class="container flex justify-center py-3 text-center text-xs font-bold">
-        Get 50% off your entire cart + Free Shipping!
-        Use code <span class=" mx-2 px-1 border border-white">BLACKFRIDAY</span> at checkout. Don’t miss out! 🛒✨ 
+        Get 50% off your entire cart + Free Shipping! 
+        Use code &nbsp BLACKFRIDAY &nbsp  at checkout. Don’t miss out!
         </div>
 </div>
 </template>
