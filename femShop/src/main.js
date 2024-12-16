@@ -13,6 +13,19 @@ const router = createRouter({
   routes,
 });
 
+
+// Agregar clases al div in .app (en index.html)
+  router.afterEach((to) => {
+    const appDiv = document.getElementById("app");
+    appDiv.className = "";
+    if (to.name) {
+      appDiv.classList.add(`${to.name}`);
+    } else {
+      appDiv.classList.add("default");
+    }
+  });
+
+
 app.use(router);
 app.use(createPinia());
 
