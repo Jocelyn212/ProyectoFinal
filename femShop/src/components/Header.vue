@@ -1,9 +1,5 @@
 <template>
     <header>
-        <div class="container flex sm:h-auto h-0   items-center justify-between sm:py-4 p-0 text-xs bg-white">
-            <span class="sm:inline-block hidden">Need help? Call us: (+98) 0234 456 789</span>
-            <span class="sm:inline-block hidden"><span class="fa-solid fa-truck mr-2"></span>Track your order</span>
-        </div> 
     <!-- Header with gradient -->
         <div class="header-gradient ">
             <div class="container items-center justify-between sm:py-4 py-1">
@@ -16,8 +12,11 @@
             <!-- Mobile Menu -->
                 <div class="sm:hidden flex justify-end w-1/2 mr-5 gap-[40%]"  >
                     <div class="link flex items-center  whitespace-nowrap font-bold text-xs gap-2 " v-if="activeUserStore.profile.avatar">
-                        <img :src="activeUserStore.profile.avatar" class="w-8 rounded-full border-amarillo border-2 shadow-md" />
-                        {{activeUserStore.profile.name}}
+                        <RouterLink to="/favorites" class="flex items-center  whitespace-nowrap gap-2">
+                            <img :src="activeUserStore.profile.avatar" class="w-8 rounded-full border-amarillo border-2 shadow-md" />
+                            {{activeUserStore.profile.name}}
+                            <span class="fa-solid fa-heart text-red"></span>
+                        </RouterLink>
                     </div>
                     <div class="mobile-menu relative">
                         <div class="hamburger cursor-pointer rounded-lg px-2 py-1 hover:bg-lila-secondary hover:transition-all" @click="toggleMobileMenu()">
@@ -51,7 +50,10 @@
                             <span class="fa-regular fa-user mr-2" ></span>Sign in
                         </li>
                         <li class="link flex items-center  whitespace-nowrap gap-2" v-if="activeUserStore.profile.avatar">
-                            <img :src="activeUserStore.profile.avatar" class="w-8 rounded-full border-amarillo sm:border-2 sm:shadow-md">{{activeUserStore.profile.name}}
+                            <RouterLink to="/favorites" class="flex items-center  whitespace-nowrap gap-2">
+                                <img :src="activeUserStore.profile.avatar" class="w-8 rounded-full border-amarillo sm:border-2 sm:shadow-md">{{activeUserStore.profile.name}}
+                                <span class="fa-solid fa-heart text-red"></span>
+                            </RouterLink>
                         </li>
                         <li class="link whitespace-nowrap" v-if="activeUserStore.profile.avatar" @click="logOut">
                             <span class="fa-regular fa-user mr-2 " ></span>Log out
@@ -73,18 +75,20 @@
 
     <!-- MODAL Log In -->
         <LoginModal v-if="isHidden" :isHidden="isHidden" @close="toggleSignIn" />
+        <Banner />
         </header>
 </template>
 <script>
 import { useCartStore} from "../stores/cart"
 import { useActiveUserStore} from "../stores/user"
 import LoginModal from "../components/LoginModal.vue";
+import Banner from "../components/Banner.vue";
 import {mapStores} from "pinia"
 import axios from "axios";
 export default {
     name: "Header",
     components: {
-        LoginModal,
+        LoginModal, Banner
     },
     data() {
         return {
