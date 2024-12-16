@@ -229,9 +229,9 @@ header .links li {
   }
   /* Footer */
   footer{
-    @apply w-full bg-lila-secondary py-8 mt-20
+    @apply w-full bg-lila-secondary py-12 mt-20 text-lila-primary
   }
   .f-logo{
-    @apply w-[120px];
+    @apply w-[220px];
   }
 
