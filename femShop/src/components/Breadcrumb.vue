@@ -57,6 +57,11 @@
                         { label: "Home", path: "/" },
                         { label: "Cart", path: "/cart" },
                     ],
+                    favorites: [
+                        { label: "Home", path: "/" },
+                        { label: "Shop", path: "/shop" },
+                        { label: "My favorites", path: "/favorites" },
+                    ],
                 };
             },
             generateBreadcrumbs(categoryName) {

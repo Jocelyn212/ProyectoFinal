@@ -50,9 +50,9 @@
                             <span class="fa-regular fa-user mr-2" ></span>Sign in
                         </li>
                         <li class="link flex items-center  whitespace-nowrap gap-2" v-if="activeUserStore.profile.avatar">
-                            <RouterLink to="/favorites" class="flex items-center  whitespace-nowrap gap-2">
+                            <RouterLink to="/favorites" class="flex items-center  whitespace-nowrap gap-2 text-white hover:text-amarillo">
                                 <img :src="activeUserStore.profile.avatar" class="w-8 rounded-full border-amarillo sm:border-2 sm:shadow-md">{{activeUserStore.profile.name}}
-                                <span class="fa-solid fa-heart text-lila-secondary"></span>
+                                <span class="fa-solid fa-heart "></span>
                             </RouterLink>
                         </li>
                         <li class="link whitespace-nowrap" v-if="activeUserStore.profile.avatar" @click="logOut">

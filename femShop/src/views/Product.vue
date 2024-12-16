@@ -6,7 +6,7 @@
     />
     <div class="container">
       <div class="product-card">
-        <!-- Images -->
+    <!-- Images -->
         <div class="product-images">
           <div class="image-primary mb-4">
             <img
@@ -29,16 +29,15 @@
             />
           </div>
         </div>
-
-        <!-- Product Data -->
-
+    <!-- Product Data -->
         <div class="product-data">
-          <div class="flex justify-between items-center mb-4">
+          <div class="flex justify-between items-start ">
             <h2 class="title">
               {{ product.title }}
             </h2>
-            <button
-              class="button button-icon"
+        <!-- Agregar a favorito -->
+            <a
+              class="mr-4"
               @click="toggleFavorite"
               :title="
                 favoritesStore.isFavorite(product.id)
@@ -46,16 +45,31 @@
                   : 'Add to favorites'
               "
             >
-              <span
+              <div
                 :class="[
                   'fa-heart text-2xl',
                   favoritesStore.isFavorite(product.id)
-                    ? 'fa-solid text-red'
-                    : 'fa-regular text-dark-grey hover:text-red',
-                ]"
-              ></span>
-            </button>
+                    ? 'fa-solid text-lila-secondary hover:text-lila-primary'
+                    : 'fa-regular text-lila-secondary hover:text-lila-primary',
+                ]" :title="favoritesStore.isFavorite(product.id) ? 'Remove from favorites' : 'Add to favorites'">
+            </div>
+             
+            </a>
           </div>
+    <!-- Message -->
+         <div class="h-[25px] flex items-start content-center">
+            <div v-if="showMessage"
+                :class="[
+                'message rounded-lg transition-all duration-300 self-start text-sm relative -top-[2px]',
+                cartMessage.type === 'success'
+                ? 'bg-green-100 text-green'
+                : 'bg-red-100 text-red',
+                ]"
+                >
+                {{ cartMessage.text }}
+            </div>
+         </div>
+          
           <p class="price">{{ product.price }} €</p>
           <div class="mb-4">
             <span class="txt mr-2">Availability: </span>
@@ -69,6 +83,7 @@
           <div class="mb-6">
             <QuantitySelector v-model="quantity" />
           </div>
+        <!-- Buttons -->
           <button
             class="button button-primary mr-2 !bg-lila-primary !text-white text-sm"
             @click="addToCart"
@@ -76,10 +91,9 @@
             <span class="fa-solid fa-cart-plus mr-2"></span>
             Add to cart
           </button>
-          <RouterLink
-            to="/cart"
+          <RouterLink to="/cart"
             class="button button-secondary text-center text-sm mr-2"
-            ><span class="fa-solid fa-cart-shopping mr-2"></span>
+            >
             Go to cart
           </RouterLink>
           <RouterLink
@@ -90,17 +104,7 @@
           </RouterLink>
         </div>
       </div>
-      <div
-        v-if="showMessage"
-        :class="[
-          'message p-4 rounded-lg mb-4 transition-all duration-300',
-          cartMessage.type === 'success'
-            ? 'bg-green-100 text-green'
-            : 'bg-red-100 text-red',
-        ]"
-      >
-        {{ cartMessage.text }}
-      </div>
+     
 
       <!-- Modal Imagenes -->
       <div

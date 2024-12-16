@@ -189,11 +189,11 @@
   </script>
   <style>
   @media  (max-width: 640px) {
-    .QuantitySelector{
+    .cart .QuantitySelector{
             flex-direction: column-reverse!important;
         }
     }
-    .QuantitySelector .qty{
+    .cart .QuantitySelector .qty{
         display:none!important
     }
   </style>
