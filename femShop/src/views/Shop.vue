@@ -96,13 +96,8 @@
         
      },
      watch: {
-        // Observamos los cambios en selectedCategory
         selectedCategory(newCategory) {
-        // Cuando cambie la categoría, actualizamos el breadcrumb
-            this.$nextTick(() => {
-                // Usamos $nextTick para asegurarnos de que la actualización ocurra después de que el DOM haya sido actualizado
-                this.$root.$emit('updateBreadcrumb', newCategory ? newCategory.name : 'All Products');
-            });
+            this.$root.$emit('updateBreadcrumb', newCategory ? newCategory.name : 'All Products');
         },
     },
      mounted() {
