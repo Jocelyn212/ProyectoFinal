@@ -2,11 +2,9 @@
     <main>
       <Breadcrumb />
       <div class="container flex-col relative">
-        <h2 class="title-1 text-center mt-4 mb-12 relative z-20">My Favorites</h2>
-       
+        <h2 class="title-1 text-center mt-4 mb-12 relative z-20">Favorites</h2>
             <div class="shop-container " >
               <Card :product="item" v-for="item in favoritesStore.items" :key="item.id" />
-  
             </div>
       </div>
     </main>

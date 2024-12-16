@@ -1,7 +1,8 @@
 <template>
 <main  class="w-full">
     <Breadcrumb />
-    <div class="container mt-5">
+    <div class="container flex-col">
+        <h2 class="title-1 text-center mb-8 mt-4 relative z-20">Cart</h2>
         <div class="cart-container max-w-screen-lg mx-auto">
             <div class="product-list">
                 <div class="titles cart-cols">

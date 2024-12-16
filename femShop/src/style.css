@@ -17,7 +17,7 @@ main {
 
 /* Titles */
 .title-1 {
-  @apply text-lila-primary text-4xl drop-shadow-sm font-bold;
+  @apply text-lila-primary lg:text-3xl text-2xl drop-shadow-sm font-bold;
 }
 .title-2 {
   @apply text-lila-primary text-xl drop-shadow-sm font-bold;
@@ -232,6 +232,6 @@ header .links li {
     @apply w-full bg-lila-secondary py-12 mt-20 text-lila-primary
   }
   .f-logo{
-    @apply w-[220px];
+    @apply lg:w-[300px] w-[200px] ;
   }
 
