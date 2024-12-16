@@ -1,15 +1,12 @@
 <template>
-   <div class="QuantitySelector">
-        <span class="txt qty">Quantity:</span>
-        <button @click="updateQuantity(quantity - 1)"
-        :disabled="quantity <= 1">
-        -
-        </button>
-        <span class="qtyn">{{ quantity }}</span>
-        <button @click="updateQuantity(quantity + 1)">
-        +
-        </button>
-    </div>
+  <div class="QuantitySelector">
+    <span class="txt qty">Quantity:</span>
+    <button @click="updateQuantity(quantity - 1)" :disabled="quantity <= 1">
+      -
+    </button>
+    <span class="qtyn">{{ quantity }}</span>
+    <button @click="updateQuantity(quantity + 1)">+</button>
+  </div>
 </template>
 <script>
 export default {
@@ -38,6 +35,4 @@ export default {
   },
 };
 </script>
-<style>
-
-</style>
+<style></style>
