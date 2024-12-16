@@ -97,7 +97,7 @@
      },
      watch: {
         selectedCategory(newCategory) {
-            this.$root.$emit('updateBreadcrumb', newCategory ? newCategory.name : 'All Products');
+            this.$root.$emit( newCategory ? newCategory.name : 'All Products');
         },
     },
      mounted() {
