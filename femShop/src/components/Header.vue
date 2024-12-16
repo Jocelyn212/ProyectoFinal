@@ -15,7 +15,7 @@
                         <RouterLink to="/favorites" class="flex items-center  whitespace-nowrap gap-2">
                             <img :src="activeUserStore.profile.avatar" class="w-8 rounded-full border-amarillo border-2 shadow-md" />
                             {{activeUserStore.profile.name}}
-                            <span class="fa-solid fa-heart text-red"></span>
+                            <span class="fa-solid fa-heart text-lila-secondary"></span>
                         </RouterLink>
                     </div>
                     <div class="mobile-menu relative">
@@ -45,14 +45,14 @@
                 </div> 
             <!-- Standard Menu -->
                 <div class="h-buttons sm:block hidden">
-                    <ul class="flex items-center gap-x-8 gap-y-0 flex-nowrap  w-auto">
+                    <ul class="flex items-center gap-x-6 gap-y-0 flex-nowrap  w-auto">
                         <li class="link" v-if="!activeUserStore.profile.avatar" @click="toggleSignIn">
                             <span class="fa-regular fa-user mr-2" ></span>Sign in
                         </li>
                         <li class="link flex items-center  whitespace-nowrap gap-2" v-if="activeUserStore.profile.avatar">
                             <RouterLink to="/favorites" class="flex items-center  whitespace-nowrap gap-2">
                                 <img :src="activeUserStore.profile.avatar" class="w-8 rounded-full border-amarillo sm:border-2 sm:shadow-md">{{activeUserStore.profile.name}}
-                                <span class="fa-solid fa-heart text-red"></span>
+                                <span class="fa-solid fa-heart text-lila-secondary"></span>
                             </RouterLink>
                         </li>
                         <li class="link whitespace-nowrap" v-if="activeUserStore.profile.avatar" @click="logOut">
