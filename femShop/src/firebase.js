@@ -27,11 +27,12 @@ const firebaseConfig2 = {
 const firebaseConfig3 = {
   apiKey: "AIzaSyC67X4TZZiSuKMOu5AneWXL2QWFLtUmVrk",
   authDomain: "cris-aa1f3.firebaseapp.com",
-  databaseURL: "https://cris-aa1f3-default-rtdb.asia-southeast1.firebasedatabase.app",
+  databaseURL:
+    "https://cris-aa1f3-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "cris-aa1f3",
   storageBucket: "cris-aa1f3.firebasestorage.app",
   messagingSenderId: "76141387735",
-  appId: "1:76141387735:web:1aefce9328e926b7b1b592"
+  appId: "1:76141387735:web:1aefce9328e926b7b1b592",
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -83,15 +84,18 @@ export async function getAllProducts() {
   const dbRef = ref(db);
   try {
     const snapshot = await get(child(dbRef, `productos`));
+    console.log("snap", snapshot);
     if (snapshot.exists()) {
       console.log(snapshot.val());
+      console.error("error");
       return snapshot.val();
     } else {
       console.log("No data available");
+      console.error("error", error);
       return [];
     }
   } catch (error) {
-    console.error(error);
+    console.error("error", error);
   }
 }
 
