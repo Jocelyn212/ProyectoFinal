@@ -1,13 +1,30 @@
 <template>
   <div class="card">
-    <figure class="relative cursor-pointer" @click="showProductDetails">
+    <figure class="relative cursor-pointer">
       <img
         v-if="product.images"
         :src="product.images[0]"
         :alt="product.title"
+        @click="showProductDetails"
       />
-      <span class="favorite fa-regular fa-heart"></span>
-      <span class="favorite fa-solid fa-heart"></span>
+      <button
+        class="button button-icon"
+        @click="handleFavoriteClick"
+        :title="
+          favoritesStore.isFavorite(product.id)
+            ? 'Remove from favorites'
+            : 'Add to favorites'
+        "
+      >
+        <span
+          :class="[
+            'fa-heart text-2xl',
+            favoritesStore.isFavorite(product.id)
+              ? 'fa-solid text-red'
+              : 'fa-regular text-dark-grey hover:text-red',
+          ]"
+        ></span>
+      </button>
     </figure>
     <div class="product-details">
       <h3 class="title flex items-center">{{ product.title }}</h3>
