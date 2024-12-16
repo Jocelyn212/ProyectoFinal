@@ -66,10 +66,11 @@ export async function getCarts(userId) {
 export async function getProduct(productId) {
   const dbRef = ref(db);
   try {
-    const snapshot = await get(child(dbRef, `productos/${productId}`));
+    const snapshot = await get(child(dbRef, `productos/`));
     if (snapshot.exists()) {
-      console.log(snapshot.val());
-      return snapshot.val();
+      const products = snapshot.val();
+      const product = products.find((product) => product.id == productId);
+      return product;
     } else {
       console.log("No data available");
       return null;
