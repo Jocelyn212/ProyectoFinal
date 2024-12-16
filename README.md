@@ -40,12 +40,12 @@ Para ejecutar este proyecto localmente, sigue estos pasos:
    git clone https://github.com/Jocelyn212/ProyectoFinal.git
    ```
 
-````
+
 
 2. **Navega al directorio del proyecto:**
 
    ```bash
-   cd ProyectoFinal
+   cd femShop
    ```
 
 3. **Instala las dependencias:**
@@ -100,4 +100,3 @@ Si deseas contribuir a este proyecto, sigue los siguientes pasos:
 ---
 
 ¡Espero que este archivo sea útil y atractivo para tu proyecto! 🎉
-````
