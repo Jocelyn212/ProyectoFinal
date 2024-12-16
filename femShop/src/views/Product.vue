@@ -3,6 +3,7 @@
     <Breadcrumb
       :productTitle="product.title"
       :categoryName="product.category.name"
+      :categoryId="product.category.id"
     />
     <div class="container">
       <div class="product-card">
