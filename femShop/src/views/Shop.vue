@@ -16,12 +16,7 @@
                     <li v-for="category in categories" :key="category.id" @click="filterByCategory(category)" >{{ category.name }}</li>
                 </ul>
             </div>
-            <div v-if="this.activeSearch" class="">
-              <span class="fa-solid fa-x cursor-pointer"  @click="searchProducts"></span>
-              <p>You searched for:</p>
-               <p class="font-bold">'{{ this.activeSearch}}'</p>
-               
-              </div>
+        
          <!-- Search -->
             <form class="self-center mb-0 z-10 relative" @submit.prevent="searchProducts">
                 <label for="pr-search" class="hidden">Search</label>
@@ -31,7 +26,14 @@
             <h2 v-if="products" class="title-2 text-center pb-2 relative  sm:hidden block">{{ selectedCategory ? selectedCategory.name : 'All products' }}</h2>
         </div>
         <!-- Shop -->
-        <div v-if="this.filteredProducts.length === 0"><p class="text-3xl font-bold text-lila-primary text-center mb-10">Sorry, no products were found for your search.</p></div>
+        <!-- You searched for -->
+        <div v-if="this.activeSearch" class="border rounded-md p-5 text-center text-base min-w-[200px] self-center mb-5  border-gray-300 relative">
+          <span class="border border-gray-300 rounded-md px-1  hover:bg-gray-100 bg-gray-200 fa-solid fa-xmark cursor-pointer absolute top-2 right-2"  @click="searchProducts"></span>
+          <p class="mt-2">You searched for:</p>
+          <p class="font-bold">'{{ this.activeSearch}}'</p>
+          
+        </div>
+        <div v-if="this.filteredProducts.length === 0"><p class="text-2xl font-bold text-lila-primary text-center mb-10">Sorry, no products were found for your search.</p></div>
          <div class="shop-container">
              <Card v-for="product in filteredProducts" :key="product.id" :product="product" @click=""/>
          </div>

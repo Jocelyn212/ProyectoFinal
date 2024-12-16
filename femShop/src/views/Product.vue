@@ -106,8 +106,12 @@
       </div>
      
 
-      <!-- Modal Imagenes -->
-      <div
+      
+    </div>
+    
+  </main>
+  <!-- Modal Imagenes -->
+  <div
         v-if="isImgModalOpen"
         class="modal-overlay"
         @click.self="closeImgModal"
@@ -140,8 +144,6 @@
           </p>
         </div>
       </div>
-    </div>
-  </main>
 </template>
 <script>
 import QuantitySelector from "../components/QuantitySelector.vue";
