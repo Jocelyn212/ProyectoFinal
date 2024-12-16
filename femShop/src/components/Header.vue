@@ -73,18 +73,20 @@
 
     <!-- MODAL Log In -->
         <LoginModal v-if="isHidden" :isHidden="isHidden" @close="toggleSignIn" />
+        <Banner />
         </header>
 </template>
 <script>
 import { useCartStore} from "../stores/cart"
 import { useActiveUserStore} from "../stores/user"
 import LoginModal from "../components/LoginModal.vue";
+import Banner from "../components/Banner.vue";
 import {mapStores} from "pinia"
 import axios from "axios";
 export default {
     name: "Header",
     components: {
-        LoginModal,
+        LoginModal, Banner
     },
     data() {
         return {

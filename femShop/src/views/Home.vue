@@ -20,8 +20,7 @@
  </template>
  
  <script>
- 
- 
+
  export default {
      name: "Home",
  }
@@ -44,7 +43,7 @@
         box-shadow: none!important;
     }
     .home .bg{
-        background-color: #00000060;
+        background-color: #00000040;
     }
     .home footer{
         display:none!important
