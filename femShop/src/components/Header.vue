@@ -31,7 +31,7 @@
                                 <span class="fa-regular fa-user mr-2 " ></span>Log out
                             </li>
                             <li class="link whitespace-nowrap hover:text-lila-primary">
-                                <RouterLink to="/">
+                                <RouterLink to="/shop">
                                 <span class="fa-solid fa-store mr-2 "></span>Shop
                                 </RouterLink>
                             </li>
@@ -57,7 +57,7 @@
                             <span class="fa-regular fa-user mr-2 " ></span>Log out
                         </li>
                         <li class="link whitespace-nowrap">
-                            <RouterLink to="/">
+                            <RouterLink to="/shop">
                             <span class="fa-solid fa-store mr-2 "></span>Shop
                             </RouterLink>
                         </li>

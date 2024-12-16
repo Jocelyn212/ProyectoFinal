@@ -1,5 +1,6 @@
 <template>
     <main>
+    <Breadcrumb :categoryName="selectedCategory ? selectedCategory.name : ''" />
     <div class="container" v-if="!loaded"><div class="loader">Loading...</div></div>
      <div class="container flex-col relative" v-if="loaded">      
          <h2 v-if="products" class="title-1 text-center mt-4 relative z-20 sm:block hidden">{{ selectedCategory ? selectedCategory.name : 'All products' }}</h2>
@@ -34,16 +35,14 @@
  </template>
  
  <script>
- import axios from "axios";
+ import Breadcrumb from "../components/Breadcrumb.vue";
  import Card from "../components/Card.vue";
  import { getAllProducts } from "../firebase"; // Asegúrate de importar el método correcto
- import { useRoute } from 'vue-router';
- import { ref, reactive } from 'vue'
  
  export default {
      name: "Home",
      components: {
-         Card
+         Card, Breadcrumb
      },
      data() {
          return {
@@ -97,7 +96,8 @@
          },
          toggleMenu() {
             this.CatisOpen = !this.CatisOpen;
-            },
+        },
+        
      },
      async mounted() {
          await this.getProductData();
@@ -125,7 +125,10 @@
       this.filterByCategory(this.categories.find((category) => category.id == this.$route.query.category))
       //Vuelve al inicio de la página
       window.scrollTo(0, 0)
-    }
+    },
+    selectedCategory(newCategory) {
+            this.$root.$emit( newCategory ? newCategory.name : 'All Products');
+        }
   },
  }
  </script>

@@ -1,5 +1,6 @@
 <template>
 <main  class="w-full">
+    <Breadcrumb />
     <div class="container mt-5">
         <div class="cart-container max-w-screen-lg mx-auto">
             <div class="product-list">
@@ -28,7 +29,7 @@
 
                 <div class="buttons" v-if="!isCartEmpty">
                     <button  class="button button-primary  text-center text-sm">
-                        <RouterLink to="/" >
+                        <RouterLink to="/shop" >
                             Continue shopping
                         </RouterLink>
                     </button>
@@ -40,9 +41,9 @@
                     </button>
                 </div>
                 <div v-else class="block text-center mt-10 flex-col">
-                    <p class="text-3xl font-bold text-lila-primary text-center mb-10">Your cart is empty!</p>
-                    <button  class="button button-secondary  text-center text-xl">
-                        <RouterLink to="/" >
+                    <p class="text-2xl font-bold text-lila-primary text-center mb-10">Your cart is empty!</p>
+                    <button  class="button button-secondary  text-center text-md">
+                        <RouterLink to="/shop" >
                             Continue shopping
                         </RouterLink>
                     </button>
@@ -113,6 +114,7 @@
 </template>
 <script>
     import QuantitySelector from "../components/QuantitySelector.vue";
+    import Breadcrumb from "../components/Breadcrumb.vue";
     import LoginModal from "../components/LoginModal.vue";
     import { useCartStore} from "../stores/cart"
     import { useActiveUserStore} from "../stores/user"
@@ -132,7 +134,7 @@
 
             }
         },
-        components: { QuantitySelector, LoginModal },
+        components: { QuantitySelector, LoginModal, Breadcrumb },
 
         computed:{
             ...mapStores(useCartStore, useActiveUserStore),
