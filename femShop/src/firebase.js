@@ -5,7 +5,7 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Your web app's Firebase configuration
 
-const firebaseConfig = {
+/* const firebaseConfig = {
   apiKey: "AIzaSyCWOoXFv8MTNA-A8IAEcGHu7YRcJkU8VxE",
   authDomain: "shop-1656d.firebaseapp.com",
   databaseURL: "https://shop-1656d-default-rtdb.firebaseio.com",
@@ -13,6 +13,15 @@ const firebaseConfig = {
   storageBucket: "shop-1656d.firebasestorage.app",
   messagingSenderId: "420163986032",
   appId: "1:420163986032:web:6007bc8b7166478eee8ab5",
+}; */
+  const firebaseConfig = {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 const firebaseConfig2 = {
