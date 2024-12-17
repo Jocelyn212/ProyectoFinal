@@ -22,13 +22,34 @@
 
 ## Funcionalidades
 
-- **Navegación de Productos**: Los usuarios pueden ver una lista de productos disponibles.
+- **Navegación de Productos**: Los usuarios pueden ver una lista de productos disponibles. Navegación por categorías.
 - **Gestión de Carrito**: Añadir y eliminar productos del carrito de compras.
 - **Favoritos**: Añadir y eliminar productos de la lista de favoritos.
 - **Autenticación**: Inicio de sesión y registro de usuarios mediante Firebase.
 - **Persistencia de Datos**: Uso de localStorage para guardar el estado del carrito y favoritos cuando el usuario no está autenticado.
 
 ---
+## Recursos
+
+- [Platzi Fake Store API](https://fakeapi.platzi.com/): API utilizada para el login de usuarios
+- [Diseño en Figma](https://www.figma.com/proto/5Ohak4z6Gll6JJ0xcWLnvT/e-commerce-(Community)?node-id=0-1&t=dncJvYimsjyJY1Uh-1): El diseño UI fue inspirado en este diseño de Figma.
+
+--- 
+## Datos para login de usuarios
+
+| Email            | Contraseña  |
+|------------------|-------------|
+| john@mail.com    | changeme    |
+| maria@mail.com   | 12345       |
+| admin@mail.com   | admin123    |
+
+--- 
+## Códigos de promociones para usar en el cart
+- 20LESS: 20% de descuento
+- ALLFREE: 100% de descuento (gratis)
+- BLACKFRIDAY: 50% de descuento
+
+--- 
 
 ## Instalación
 
@@ -39,8 +60,6 @@ Para ejecutar este proyecto localmente, sigue estos pasos:
    ```bash
    git clone https://github.com/Jocelyn212/ProyectoFinal.git
    ```
-
-
 
 2. **Navega al directorio del proyecto:**
 
@@ -56,9 +75,18 @@ Para ejecutar este proyecto localmente, sigue estos pasos:
 
 4. **Configura las variables de entorno:**
 
-   Crea un archivo `.env` en la raíz del proyecto y configura tus variables de entorno para Firebase y la API.
+   Crea un archivo `.env` en la raíz del proyecto y configura tus variables de entorno, con tus datos de firebase:
+   ```bash
+   VITE_FIREBASE_API_KEY=
+   VITE_FIREBASE_AUTH_DOMAIN=
+   VITE_FIREBASE_DATABASE_URL=
+   VITE_FIREBASE_PROJECT_ID=
+   VITE_FIREBASE_STORAGE_BUCKET=
+   VITE_FIREBASE_MESSAGING_SENDER_ID=
+   VITE_FIREBASE_APP_ID=
+   ```
 
-5. **Inicia el servidor de desarrollo:**
+6. **Inicia el servidor de desarrollo:**
 
    ```bash
    npm run dev
@@ -68,7 +96,7 @@ Para ejecutar este proyecto localmente, sigue estos pasos:
 
 ## Uso
 
-Accede a **FemShop** para ver la aplicación en acción. Puedes navegar por los productos, añadirlos al carrito, gestionar tus favoritos y más.
+Accede a [FemShop](https://femshop.vercel.app/): para ver la aplicación en acción. Puedes navegar por los productos, añadirlos al carrito, gestionar tus favoritos y más.
 
 ---
 
@@ -99,4 +127,3 @@ Si deseas contribuir a este proyecto, sigue los siguientes pasos:
 
 ---
 
-¡Espero que este archivo sea útil y atractivo para tu proyecto! 🎉
