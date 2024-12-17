@@ -4,8 +4,8 @@
             <div class="logo lg:mr-12 mr-6 mb-5 sm:mb-0 flex md:justify-start justify-center items-center"> <router-link to="/">
                 <img src="../img/logo-lila.png" alt="FemShop - Online Shop" class="f-logo"></router-link>
             </div>
-            <div class="links grid sm:grid-cols-2 md:grid-cols-4 items-start md:justify-start justify-center gap-2 w-full">
-                <div class="p-4 pt-0">
+            <div class="links grid sm:grid-cols-2 md:grid-cols-4 items-start md:justify-start justify-center gap-2 w-full leading-8">
+                <div class="p-4 pt-0 ">
                     <h3 class="mb-2 font-semibold ">Find product</h3>
                     <ul>
                          <li class="hover:opacity-70"><router-link :to="{ name: 'shop', query: { keywords: 'table', category: '3' } }">Tables</router-link></li> 

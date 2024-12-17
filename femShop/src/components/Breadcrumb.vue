@@ -61,7 +61,7 @@
                     favorites: [
                         { label: "Home", path: "/" },
                         { label: "Shop", path: "/shop" },
-                        { label: "My favorites", path: "/favorites" },
+                        { label: "Favorites", path: "/favorites" },
                     ],
                 };
             },
