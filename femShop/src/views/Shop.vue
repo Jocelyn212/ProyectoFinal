@@ -16,7 +16,7 @@
                     <li v-for="category in categories" :key="category.id" @click="filterByCategory(category)" >{{ category.name }}</li>
                 </ul>
             </div>
-        
+            <div v-if="this.activeSearch"><span class="mr-3 text-2xl">'{{ this.activeSearch}}'</span><router-link :to="{ name: 'shop' }"> <sup><i class="fa-solid fa-x cursor-pointer"  @click="searchProducts"></i></sup></router-link></div>
          <!-- Search -->
             <form class="self-center mb-0 z-10 relative" @submit.prevent="searchProducts">
                 <label for="pr-search" class="hidden">Search</label>
@@ -65,7 +65,8 @@
              categories: [], // Lista de categorías
              selectedCategory: null, // Categoría seleccionada
              loaded: false,
-             activeSearch: null
+             activeSearch: null,
+             errorMessage: null
          }
      },
      methods: {
@@ -75,7 +76,6 @@
                  this.products = response;
                  this.filteredProducts = this.products; 
                  this.extractCategories(); // Extraer categorías de los productos
-                 console.log(response);
                  this.loaded = true
              } catch(error) {
                  console.log(error)
@@ -84,7 +84,9 @@
          searchProducts() {
              this.filterProducts();
              this.activeSearch = this.searchQuery
-             this.searchQuery = "";
+             setTimeout(() => {
+                  this.searchQuery = "";
+              }, 10);
          },
          filterProducts() {
              let filtered = this.products;

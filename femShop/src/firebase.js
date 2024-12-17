@@ -24,7 +24,16 @@ const firebaseConfig2 = {
   messagingSenderId: "576112958325",
   appId: "1:576112958325:web:bc3b3d5a39c6516fd1913c",
 };
-
+const firebaseConfig3 = {
+  apiKey: "AIzaSyC67X4TZZiSuKMOu5AneWXL2QWFLtUmVrk",
+  authDomain: "cris-aa1f3.firebaseapp.com",
+  databaseURL:
+    "https://cris-aa1f3-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "cris-aa1f3",
+  storageBucket: "cris-aa1f3.firebasestorage.app",
+  messagingSenderId: "76141387735",
+  appId: "1:76141387735:web:1aefce9328e926b7b1b592",
+};
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 // Get a reference to the database service
@@ -57,10 +66,11 @@ export async function getCarts(userId) {
 export async function getProduct(productId) {
   const dbRef = ref(db);
   try {
-    const snapshot = await get(child(dbRef, `productos/${productId}`));
+    const snapshot = await get(child(dbRef, `productos/`));
     if (snapshot.exists()) {
-      console.log(snapshot.val());
-      return snapshot.val();
+      const products = snapshot.val();
+      const product = products.find((product) => product.id == productId);
+      return product;
     } else {
       console.log("No data available");
       return null;
@@ -75,15 +85,18 @@ export async function getAllProducts() {
   const dbRef = ref(db);
   try {
     const snapshot = await get(child(dbRef, `productos`));
+    console.log("snap", snapshot);
     if (snapshot.exists()) {
       console.log(snapshot.val());
+      console.error("error");
       return snapshot.val();
     } else {
       console.log("No data available");
+      console.error("error", error);
       return [];
     }
   } catch (error) {
-    console.error(error);
+    console.error("error", error);
   }
 }
 
