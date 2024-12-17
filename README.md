@@ -75,7 +75,7 @@ Para ejecutar este proyecto localmente, sigue estos pasos:
 
 4. **Configura las variables de entorno:**
 
-   Crea un archivo `.env` en la raíz del proyecto y configura tus variables de entorno, con tus datos de firebase:
+   Crea un archivo `.env` en la raíz del proyecto y configura tus variables de entorno, con tus datos de firebase (Real Time Database:
    ```bash
    VITE_FIREBASE_API_KEY=
    VITE_FIREBASE_AUTH_DOMAIN=
