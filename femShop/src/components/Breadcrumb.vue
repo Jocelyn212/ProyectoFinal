@@ -15,6 +15,7 @@
         props: {
             productTitle: "",
             categoryName: "",
+            categoryId: null,
         },
         
         data() {
@@ -45,17 +46,22 @@
                     category: [
                         { label: "Home", path: "/" },
                         { label: "Shop", path: "/shop" },
-                        { label: this.categoryName || "Category", path: null },
+                        { label: this.categoryName || "Category",  path: null },
                     ],
                     product: [
                         { label: "Home", path: "/" },
                         { label: "Shop", path: "/shop" },
-                        { label: this.categoryName || "All products", path: "/shop" },
+                        { label: this.categoryName || "All products", path: `/shop?category=${this.categoryId}`},
                         { label: this.productTitle || "Product", path: null },
                     ],
                     cart: [
                         { label: "Home", path: "/" },
                         { label: "Cart", path: "/cart" },
+                    ],
+                    favorites: [
+                        { label: "Home", path: "/" },
+                        { label: "Shop", path: "/shop" },
+                        { label: "Favorites", path: "/favorites" },
                     ],
                 };
             },

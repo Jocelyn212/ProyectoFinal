@@ -7,32 +7,28 @@
         :alt="product.title"
         @click="showProductDetails"
       />
-      <button
-        class="button button-icon"
-        @click="handleFavoriteClick"
-        :title="
-          favoritesStore.isFavorite(product.id)
-            ? 'Remove from favorites'
-            : 'Add to favorites'
-        "
-      >
-        <span
-          :class="[
-            'fa-heart text-2xl',
-            favoritesStore.isFavorite(product.id)
-              ? 'fa-solid text-red'
-              : 'fa-regular text-dark-grey hover:text-red',
-          ]"
-        ></span>
-      </button>
+      
     </figure>
     <div class="product-details">
       <h3 class="title flex items-center">{{ product.title }}</h3>
-      <p class="price">€ {{ product.price }}</p>
+      <div class="flex flex-nowrap justify-between mt-3">
+        <p class="price">€ {{ product.price }}</p>
+        <a class="" @click="handleFavoriteClick">
+            <div
+                :class="[
+                'fa-heart text-2xl',
+                favoritesStore.isFavorite(product.id)
+                    ? 'fa-solid text-red hover:text-red-dark'
+                    : 'fa-regular text-red hover:text-red-dark',
+                ]" :title="favoritesStore.isFavorite(product.id) ? 'Remove from favorites' : 'Add to favorites'">
+            </div>
+        </a>
+      </div>
+      
     </div>
     <div class="buttons flex p-1 justify-between items-end">
       <button
-        class="button button-secondary whitespace-nowrap mr-2 rounded-xl"
+        class="button button-secondary whitespace-nowrap mr-2 rounded-xl !bg-lila-primary"
         @click="cartStore.addItemToCart(product, 1)"
       >
         Add to cart

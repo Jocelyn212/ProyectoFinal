@@ -58,6 +58,9 @@
         outline:1.5px!important;
         text-decoration:none
     }
+    .home .banner{
+        display:none!important
+    }
     @media (min-width: 640px) {
         .home header .logo img {
             width: 160px;
