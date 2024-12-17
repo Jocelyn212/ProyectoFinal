@@ -13,6 +13,7 @@ export const useCartStore = defineStore("cart", {
       return userStore.profile.id;
     },
     addItemToCart(product, q) {
+      console.log("agregando al carrito", product, q);
       const userID = this.getUserID();
       //Veo si ya tengo el objeto en el array
       const item = this.items.find((item) => item.id === product.id);
@@ -71,16 +72,26 @@ export const useCartStore = defineStore("cart", {
       // Revisa si hay items en el carrito actual (del localStorage)
       if (this.cartSize === 0) {
         // Si hay 0 items solamente actualiza el estado con los items que trajo de Firebase
+        console.log("no hay items en el carrito");
         this.items = cart;
       } else {
-        // Si ya hay items, agrega uno a uno (esto es para que revise si algun producto ya esta y no se repitan.)
-        cart.forEach((product) => {
-          this.addItemToCart(product, product.cantidad);
-        });
+        // Si ya hay items, reviso si ya tiene algo el usuario en firebase
+        if (cart.length === 0) {
+          // Si no tiene nada en firebase => actualizo firebase con los items del localStorage
+          this.updateAllCart();
+        } else {
+          // Si ya tiene items en firebase => actualizo el estado con los items de firebase
+          // agrega uno a uno (esto es para que revise si algun producto ya esta y no se repitan.)
+          this.items = cart;
+          cart.forEach((product) => {
+            this.addItemToCart(product, product.cantidad);
+          });
+        }
         // Borra el localStorage
         localStorage.removeItem("cart");
       }
     },
+
     getLocalStorageCart() {
       const cart = localStorage.getItem("cart");
       if (cart !== null) {

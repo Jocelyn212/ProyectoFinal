@@ -1,7 +1,8 @@
 <template>
 <main  class="w-full">
     <Breadcrumb />
-    <div class="container mt-5">
+    <div class="container flex-col">
+        <h2 class="title-1 text-center mb-8 mt-4 relative z-20">Cart</h2>
         <div class="cart-container max-w-screen-lg mx-auto">
             <div class="product-list">
                 <div class="titles cart-cols">
@@ -139,7 +140,7 @@
         computed:{
             ...mapStores(useCartStore, useActiveUserStore),
              isAuthenticated() {
-                return !!this.activeUserStore.profile?.avatar;
+                return this.activeUserStore.profile?.name;
             },
             isCartEmpty() {
                 return this.cartStore.items.length === 0; 
@@ -189,11 +190,11 @@
   </script>
   <style>
   @media  (max-width: 640px) {
-    .QuantitySelector{
+    .cart .QuantitySelector{
             flex-direction: column-reverse!important;
         }
     }
-    .QuantitySelector .qty{
+    .cart .QuantitySelector .qty{
         display:none!important
     }
   </style>

@@ -20,8 +20,7 @@
  </template>
  
  <script>
- 
- 
+
  export default {
      name: "Home",
  }
@@ -44,7 +43,7 @@
         box-shadow: none!important;
     }
     .home .bg{
-        background-color: #00000060;
+        background-color: #00000040;
     }
     .home footer{
         display:none!important
@@ -58,6 +57,9 @@
         -webkit-text-stroke: 1.5px #540D6E;
         outline:1.5px!important;
         text-decoration:none
+    }
+    .home .banner{
+        display:none!important
     }
     @media (min-width: 640px) {
         .home header .logo img {
