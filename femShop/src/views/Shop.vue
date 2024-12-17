@@ -7,11 +7,11 @@
          <div class="catalog-headings bg-black">
         <!-- Dropdown categorias -->
             <div class="relative inline-block w-[70%] sm:w-auto z-20">
-                <button class="dropdown-button w-full " @click="toggleMenu">Browse categories 
+                <button class="dropdown-button w-full  whitespace-nowrap mt-1 sm:mt-0" @click="toggleMenu">Browse categories 
                     <span v-if="CatisOpen" class="fa-solid fa-chevron-up ml-2 text-dark-grey"></span>
                     <span  v-else class="fa-solid fa-chevron-down ml-2 text-dark-grey"></span>
                 </button>
-                <ul v-if="CatisOpen" class="dropdown-menu" @click="toggleMenu">
+                <ul v-if="CatisOpen" class="dropdown-menu " @click="toggleMenu">
                     <li @click="filterByCategory(null)" >All products</li>
                     <li v-for="category in categories" :key="category.id" @click="filterByCategory(category)" >{{ category.name }}</li>
                 </ul>
@@ -20,7 +20,7 @@
          <!-- Search -->
             <form class="self-center mb-0 z-10 relative" @submit.prevent="searchProducts">
                 <label for="pr-search" class="hidden">Search</label>
-                <input v-model="searchQuery" id="pr-search" type="text" placeholder="Search ..." class="form-input sm:w-[220px] !border-amarillo" />
+                <input v-model="searchQuery" id="pr-search" type="text" placeholder="Search ..." class="form-input sm:w-[220px] w-[180px] !border-amarillo" />
                 <button class="button button-primary -ml-[12px] relative !border-amarillo">Search</button>
             </form>
             <h2 v-if="products" class="title-2 text-center pb-2 relative  sm:hidden block">{{ selectedCategory ? selectedCategory.name : 'All products' }}</h2>
