@@ -16,7 +16,6 @@
                     <li v-for="category in categories" :key="category.id" @click="filterByCategory(category)" >{{ category.name }}</li>
                 </ul>
             </div>
-            <div v-if="this.activeSearch"><span class="mr-3 text-2xl">'{{ this.activeSearch}}'</span><router-link :to="{ name: 'shop' }"> <sup><i class="fa-solid fa-x cursor-pointer"  @click="searchProducts"></i></sup></router-link></div>
          <!-- Search -->
             <form class="self-center mb-0 z-10 relative" @submit.prevent="searchProducts">
                 <label for="pr-search" class="hidden">Search</label>
