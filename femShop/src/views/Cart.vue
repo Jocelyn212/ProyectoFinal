@@ -140,7 +140,7 @@
         computed:{
             ...mapStores(useCartStore, useActiveUserStore),
              isAuthenticated() {
-                return !!this.activeUserStore.profile?.avatar;
+                return this.activeUserStore.profile?.name;
             },
             isCartEmpty() {
                 return this.cartStore.items.length === 0; 

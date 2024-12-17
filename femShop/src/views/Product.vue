@@ -50,8 +50,8 @@
                 :class="[
                   'fa-heart text-2xl',
                   favoritesStore.isFavorite(product.id)
-                    ? 'fa-solid text-lila-secondary hover:text-lila-primary'
-                    : 'fa-regular text-lila-secondary hover:text-lila-primary',
+                    ? 'fa-solid text-red hover:text-red-dark'
+                    : 'fa-regular text-red hover:text-red-dark',
                 ]" :title="favoritesStore.isFavorite(product.id) ? 'Remove from favorites' : 'Add to favorites'">
             </div>
              
