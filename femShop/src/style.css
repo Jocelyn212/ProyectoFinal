@@ -113,7 +113,7 @@ header .links li {
 /* Shop */
 
 .shop-container {
-  @apply grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-10 justify-center md:justify-between mt-[180px] sm:mt-0;
+  @apply grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-10 justify-center md:justify-between mt-[180px] sm:mt-0;
 }
 .card {
   @apply border rounded-xl  border-grey grid grid-cols-1 gap-2 w-full max-w-[300px] mx-auto;

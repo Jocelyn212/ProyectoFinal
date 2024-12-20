@@ -27,7 +27,7 @@
       <!-- Shop -->
          <div class="shop-container">
         <!-- You searched for -->
-            <div class="lg:col-span-4 md:col-span-3">
+            <div class="lg:col-span-4 md:col-span-2">
               
               <div v-if="this.activeSearch" class="border  rounded-md p-2 text-center text-base min-w-[200px] max-w-[300px] self-center mb-5  border-gray-300 relative mx-auto">
                 <span class="border border-gray-300 rounded-md px-1  hover:bg-gray-100 bg-gray-200 fa-solid fa-xmark cursor-pointer absolute top-2 right-2"  @click="searchProducts"></span>

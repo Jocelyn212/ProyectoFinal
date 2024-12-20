@@ -282,6 +282,7 @@ export default {
         align-items: center;
         justify-content: space-between;
         position: relative;
+        max-width: 100%;
     }
     .modal-images .close-btn{
         z-index:100!important;
